@@ -41,7 +41,16 @@ export default function Towns() {
         }
     };
 
-    useEffect(() => {        
+
+    const [isReady, setIsReady] = useState(false);
+
+    useEffect(() => {
+        // Set isReady to true after the initial render
+        setIsReady(true);
+    }, []);
+
+    useEffect(() => {  
+        if (!isReady) return;
             const values:filterHandlerReturn = filterHandler({ selectedMonths, selectedTown, selectedStreetNames, selectedBlocks, selectedFlatType, months, towns, streets, blocks, flatTypes });
             setStreets(values.filterStreets);
             setBlocks(values.filterBlocks);

@@ -1,4 +1,4 @@
-import data from "@/data/test.json";
+import data from "@/data/transaction.json";
 import { FilterHandlerParams, filterHandlerReturn } from "@/types/data";
 
 export const filterHandler = ({
@@ -9,7 +9,10 @@ export const filterHandler = ({
   selectedBlocks,
 }: FilterHandlerParams): filterHandlerReturn => {
   const transactions = data as Array<any>;
-  const filteredTransaction = transactions.filter((transaction) => {
+
+  console.log('inside filterHandler');
+  const filteredTransaction = transactions.filter((transaction, index) => {
+    if(index>50000) return false;
     if (selectedTown && transaction.town !== selectedTown) {
       return false;
     }

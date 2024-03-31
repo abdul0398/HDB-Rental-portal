@@ -36,8 +36,7 @@ export default function Blocks() {
             return newSelectedBlocks;
         });
     };
-
-
+    
 
     useEffect (() => {
         const values:filterHandlerReturn = filterHandler({ selectedMonths, selectedTown, selectedStreetNames, selectedBlocks, selectedFlatType, months, towns, streets, blocks, flatTypes });

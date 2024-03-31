@@ -2,7 +2,7 @@ import { Button } from "@/components/ui/button";
 import { MyContext } from "@/context/context";
 import { filterHandler } from "@/actions/filterHandler";
 import { filterHandlerReturn } from "@/types/data";
-import { useContext, useEffect, useMemo } from "react";
+import React, { useContext, useEffect, useMemo } from "react";
 
 export default function FlatType() {
     const {
@@ -31,20 +31,27 @@ export default function FlatType() {
         setSelectedFlatType(selectedFlatType === flatType ? "" : flatType);
     };
 
-    const filteredValues = useMemo(() => filterHandler({
-        selectedMonths,
-        selectedTown,
-        selectedStreetNames,
-        selectedBlocks,
-        selectedFlatType,
-        months,
-        towns,
-        streets,
-        blocks,
-        flatTypes
-    }), [selectedFlatType, selectedMonths, selectedTown, selectedStreetNames, selectedBlocks, months, towns, streets, blocks, flatTypes]);
-
+    const [isReady, setIsReady] = React.useState(false);
     useEffect(() => {
+        // Set isReady to true after the initial render
+        setIsReady(true);
+    }, [])
+    
+    useEffect(() => {
+        if (!isReady) return;
+      
+        const filteredValues  = filterHandler({
+            selectedMonths,
+            selectedTown,
+            selectedStreetNames,
+            selectedBlocks,
+            selectedFlatType,
+            months,
+            towns,
+            streets,
+            blocks,
+            flatTypes
+        })
         setStreets(filteredValues.filterStreets);
         setBlocks(filteredValues.filterBlocks);
         setFlatTypes(filteredValues.filterFlatTypes);

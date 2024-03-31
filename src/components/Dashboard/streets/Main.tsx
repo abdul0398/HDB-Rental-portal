@@ -1,4 +1,4 @@
-import React, { useState, useContext, useEffect } from 'react';
+import React, { useState, useContext, useEffect, use } from 'react';
 import { FixedSizeList as List } from 'react-window';
 import { Input } from "@/components/ui/input";
 import { MyContext } from "@/context/context";
@@ -72,8 +72,17 @@ export default function Streets() {
             setSelectedStreetNames(prev => prev.filter(name => name !== filteredStreets[index]));
         }
     };
+    const [isReady, setIsReady] = useState(false);
 
     useEffect(() => {
+        // Set isReady to true after the initial render
+        setIsReady(true);
+    },[])
+
+
+    useEffect(() => {
+        if (!isReady) return;
+
         const values:filterHandlerReturn = filterHandler({ selectedMonths, selectedTown, selectedStreetNames, selectedBlocks, selectedFlatType, months, towns, streets, blocks, flatTypes });
         setBlocks(values.filterBlocks);
         setFlatTypes(values.filterFlatTypes);

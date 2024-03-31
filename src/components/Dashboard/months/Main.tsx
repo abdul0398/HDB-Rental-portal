@@ -1,4 +1,4 @@
-import React, { ChangeEvent, FormEvent, useContext, useEffect } from "react";
+import React, { ChangeEvent, FormEvent, useContext, useEffect, useState } from "react";
 import { Checkbox } from "@/components/ui/checkbox";
 import { MyContext } from "@/context/context";
 import { filterHandler } from "@/actions/filterHandler";
@@ -27,7 +27,18 @@ export default function Months() {
         setSelectedStreetNames
     } = useContext(MyContext);
 
+    const [isReady, setIsReady] = useState(false);
+
     useEffect(() => {
+        // Set isReady to true after the initial render
+        setIsReady(true);
+    },[])
+
+
+    useEffect(() => {
+       if (!isReady) return;
+
+
         const values: filterHandlerReturn = filterHandler({
             selectedMonths,
             selectedTown,
