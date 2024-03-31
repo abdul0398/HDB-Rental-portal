@@ -53,8 +53,8 @@ export default function Towns() {
         if (!isReady) return;
         async function fetchData() {
             const values:filterHandlerReturn = await filterHandler({ selectedMonths, selectedTown, selectedStreetNames, selectedBlocks, selectedFlatType, months, towns, streets, blocks, flatTypes });
-            console.log(values.filterStreets);
-            setStreets(values.filterStreets);
+            // console.log(values.filterStreets);
+            // setStreets(values.filterStreets);
             setBlocks(values.filterBlocks);
             setFlatTypes(values.filterFlatTypes);
             setMonths(values.filterMonths);
