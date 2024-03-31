@@ -78,6 +78,7 @@ const Graph = () => {
             });
             
         });
+        datasets.sort((a, b) => a.label.localeCompare(b.label));
         setData(datasets);
         setLabels(labels);
         setLoading(false);
