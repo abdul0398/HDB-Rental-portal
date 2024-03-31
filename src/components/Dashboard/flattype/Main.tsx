@@ -39,25 +39,17 @@ export default function FlatType() {
     
     useEffect(() => {
         if (!isReady) return;
-      
-        const filteredValues  = filterHandler({
-            selectedMonths,
-            selectedTown,
-            selectedStreetNames,
-            selectedBlocks,
-            selectedFlatType,
-            months,
-            towns,
-            streets,
-            blocks,
-            flatTypes
-        })
-        setStreets(filteredValues.filterStreets);
-        setBlocks(filteredValues.filterBlocks);
-        setFlatTypes(filteredValues.filterFlatTypes);
-        setMonths(filteredValues.filterMonths);
-        setTowns(filteredValues.filterTowns);
-        setTransactions(filteredValues.filteredTransaction);
+        async function fetchData() {
+            const values:filterHandlerReturn = await filterHandler({ selectedMonths, selectedTown, selectedStreetNames, selectedBlocks, selectedFlatType, months, towns, streets, blocks, flatTypes });
+            console.log(values.filterStreets);
+            setStreets(values.filterStreets);
+            setBlocks(values.filterBlocks);
+            setFlatTypes(values.filterFlatTypes);
+            setMonths(values.filterMonths);
+            setTowns(values.filterTowns);
+            setTransactions(values.filteredTransaction);
+        }
+        fetchData();
     }, [selectedFlatType]);
 
     const getButtonClassName = (type : string) => {

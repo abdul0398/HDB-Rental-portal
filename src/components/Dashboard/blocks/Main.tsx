@@ -36,15 +36,25 @@ export default function Blocks() {
             return newSelectedBlocks;
         });
     };
-    
+
+        const [isReady, setIsReady] = useState(false);
+    useEffect(() => {
+        setIsReady(true);
+
+    }, [])
 
     useEffect (() => {
-        const values:filterHandlerReturn = filterHandler({ selectedMonths, selectedTown, selectedStreetNames, selectedBlocks, selectedFlatType, months, towns, streets, blocks, flatTypes });
-        setStreets(values.filterStreets);
-        setFlatTypes(values.filterFlatTypes);
-        setMonths(values.filterMonths);
-        setTowns(values.filterTowns);
-        setTransactions(values.filteredTransaction);
+        if (!isReady) return;
+        async function fetchData() {
+            const values:filterHandlerReturn = await filterHandler({ selectedMonths, selectedTown, selectedStreetNames, selectedBlocks, selectedFlatType, months, towns, streets, blocks, flatTypes });
+            console.log(values.filterStreets);
+            setStreets(values.filterStreets);
+            setFlatTypes(values.filterFlatTypes);
+            setMonths(values.filterMonths);
+            setTowns(values.filterTowns);
+            setTransactions(values.filteredTransaction);
+        }
+        fetchData();
     }, [selectedBlocks]);
 
     return (

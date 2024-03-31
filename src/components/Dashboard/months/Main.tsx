@@ -37,25 +37,16 @@ export default function Months() {
 
     useEffect(() => {
        if (!isReady) return;
-
-
-        const values: filterHandlerReturn = filterHandler({
-            selectedMonths,
-            selectedTown,
-            selectedStreetNames,
-            selectedBlocks,
-            selectedFlatType,
-            months,
-            towns,
-            streets,
-            blocks,
-            flatTypes
-        });
+       async function fetchData() {
+        const values:filterHandlerReturn = await filterHandler({ selectedMonths, selectedTown, selectedStreetNames, selectedBlocks, selectedFlatType, months, towns, streets, blocks, flatTypes });
+        console.log(values.filterStreets);
         setStreets(values.filterStreets);
         setBlocks(values.filterBlocks);
         setFlatTypes(values.filterFlatTypes);
         setTowns(values.filterTowns);
         setTransactions(values.filteredTransaction);
+    }
+    fetchData();
     }, [selectedMonths]);
 
     const onCheckboxChange = (e: ChangeEvent<HTMLInputElement>, month: string) => {

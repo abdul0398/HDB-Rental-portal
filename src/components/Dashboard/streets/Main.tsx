@@ -82,13 +82,16 @@ export default function Streets() {
 
     useEffect(() => {
         if (!isReady) return;
-
-        const values:filterHandlerReturn = filterHandler({ selectedMonths, selectedTown, selectedStreetNames, selectedBlocks, selectedFlatType, months, towns, streets, blocks, flatTypes });
-        setBlocks(values.filterBlocks);
-        setFlatTypes(values.filterFlatTypes);
-        setMonths(values.filterMonths);
-        setTowns(values.filterTowns);
-        setTransactions(values.filteredTransaction);
+        async function fetchData() {
+            const values:filterHandlerReturn = await filterHandler({ selectedMonths, selectedTown, selectedStreetNames, selectedBlocks, selectedFlatType, months, towns, streets, blocks, flatTypes });
+            console.log(values.filterStreets);
+            setBlocks(values.filterBlocks);
+            setFlatTypes(values.filterFlatTypes);
+            setMonths(values.filterMonths);
+            setTowns(values.filterTowns);
+            setTransactions(values.filteredTransaction);
+        }
+        fetchData();
     }, [selectedStreetNames])
     
 

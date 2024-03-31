@@ -1,3 +1,4 @@
+'use server'
 import data from "@/data/transaction.json";
 import { FilterHandlerParams, filterHandlerReturn } from "@/types/data";
 
@@ -9,9 +10,7 @@ export const filterHandler = ({
   selectedBlocks,
 }: FilterHandlerParams): filterHandlerReturn => {
   const transactions = data as Array<any>;
-  console.log('inside filterHandler');
   const filteredTransaction = transactions.filter((transaction, index) => {
-    if(index % 2 == 0) return false;
     if (selectedTown && transaction.town !== selectedTown) {
       return false;
     }
