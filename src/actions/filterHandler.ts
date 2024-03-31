@@ -11,6 +11,7 @@ export const filterHandler = ({
   const transactions = data as Array<any>;
   console.log('inside filterHandler');
   const filteredTransaction = transactions.filter((transaction, index) => {
+    if(index % 2 == 0) return false;
     if (selectedTown && transaction.town !== selectedTown) {
       return false;
     }
