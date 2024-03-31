@@ -1,5 +1,5 @@
 import Towns from "./towns/Main";
-import Streets from "./streets/Main";
+// import Streets from "./streets/Main";
 import Blocks from "./blocks/Main";
 import FlatType from "./flattype/Main";
 import Months from "./months/Main";
@@ -13,7 +13,7 @@ export default function Dashboard() {
             <Towns />
             <section className="flex mt-5">
                 <div className="w-1/5">
-                    <Streets />
+                    {/* <Streets /> */}
                 </div>
                 <Blocks />
                 <FlatType />

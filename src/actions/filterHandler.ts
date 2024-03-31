@@ -68,7 +68,7 @@ export const filterHandler = ({
   return {
     filterMonths,
     filterTowns,
-    filterStreets :[],
+    // filterStreets :[],
     filterBlocks,
     filterFlatTypes,
     filteredTransaction,
