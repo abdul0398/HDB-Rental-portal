@@ -1,0 +1,56 @@
+[
+    {
+        "_id": 3233,
+        "rent_approval_date": "2021-01",
+        "town": "YISHUN",
+        "block": "115C",
+        "street_name": "YISHUN RING RD",
+        "flat_type": "5-ROOM",
+        "monthly_rent": "1800"
+      },
+      {
+        "_id": 3234,
+        "rent_approval_date": "2021-01",
+        "town": "YISHUN",
+        "block": "315C",
+        "street_name": "YISHUN AVE 9",
+        "flat_type": "4-ROOM",
+        "monthly_rent": "2250"
+      },
+      {
+        "_id": 3235,
+        "rent_approval_date": "2021-01",
+        "town": "YISHUN",
+        "block": "336A",
+        "street_name": "YISHUN ST 31",
+        "flat_type": "4-ROOM",
+        "monthly_rent": "1750"
+      },
+      {
+        "_id": 3236,
+        "rent_approval_date": "2021-01",
+        "town": "YISHUN",
+        "block": "347B",
+        "street_name": "YISHUN AVE 11",
+        "flat_type": "3-ROOM",
+        "monthly_rent": "1750"
+      },
+      {
+        "_id": 3237,
+        "rent_approval_date": "2021-01",
+        "town": "YISHUN",
+        "block": "347B",
+        "street_name": "YISHUN AVE 11",
+        "flat_type": "4-ROOM",
+        "monthly_rent": "2000"
+      },
+      {
+        "_id": 3238,
+        "rent_approval_date": "2021-01",
+        "town": "YISHUN",
+        "block": "428A",
+        "street_name": "YISHUN AVE 11",
+        "flat_type": "5-ROOM",
+        "monthly_rent": "1900"
+      }
+]

@@ -1,4 +1,4 @@
-import data from "@/data/transaction.json";
+import data from "@/data/test.json";
 import { FilterHandlerParams, filterHandlerReturn } from "@/types/data";
 
 export const filterHandler = ({
