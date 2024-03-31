@@ -33,7 +33,7 @@ export default function Transactions() {
 };
 
  return (
-    <div className="flex flex-col bg-white h-full overflow-auto">
+    <div className="flex flex-col bg-white">
       <div className="overflow-x-auto sm:-mx-6 lg:-mx-8">
         <div className="inline-block min-w-full py-2 sm: lg:px-8">
           <div className="overflow-hidden">
@@ -49,7 +49,7 @@ export default function Transactions() {
               </div>
               <div className="overflow-hidden">
                 <List
-                 height={500}
+                 height={480}
                  itemCount={transactions.length}
                  itemSize={50} 
                  width={'100%'}

@@ -24,6 +24,10 @@ export default function Towns() {
         selectedTown,
         setSelectedTown,
         setTransactions,
+        setSelectedBlocks,
+        setSelectedFlatType,
+        setSelectedMonths,
+        setSelectedStreetNames,
         selectedMonths,
         selectedBlocks,
         selectedFlatType,
@@ -49,10 +53,10 @@ export default function Towns() {
 
     const handleReset = () => {
         setSelectedTown("");
-        setStreets(streets);
-        setBlocks(blocks);
-        setFlatTypes(flatTypes);
-        setTowns(defaultTowns);
+        setSelectedBlocks([]);
+        setSelectedFlatType("");
+        setSelectedMonths([]);
+        setSelectedStreetNames([]);
     };
     return (
         <section className="pt-3">
