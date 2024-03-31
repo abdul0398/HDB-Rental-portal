@@ -11,9 +11,13 @@ const List = dynamic(() => import('react-window').then((mod) => mod.FixedSizeLis
 export default function Transactions() {
  const { transactions } = useContext(MyContext);
 
+// cap the size of transaction to 50000
+const smallTransactions = transactions.slice(0, 50000);
+
+
  // Define the Row component with proper types for props
  const Row: React.FC<ListChildComponentProps> = ({ index, style }) => {
- const transaction = transactions[index];
+ const transaction = smallTransactions[index];
 
  if (!transaction) {
     return null; // Return null if transaction is not available
@@ -50,7 +54,7 @@ export default function Transactions() {
               <div className="overflow-hidden">
                 <List
                  height={480}
-                 itemCount={transactions.length}
+                 itemCount={smallTransactions.length}
                  itemSize={50} 
                  width={'100%'}
                 >
