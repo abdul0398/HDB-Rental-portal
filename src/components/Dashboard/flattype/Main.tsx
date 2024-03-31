@@ -41,7 +41,7 @@ export default function FlatType() {
         if (!isReady) return;
         async function fetchData() {
             const values:filterHandlerReturn = await filterHandler({ selectedMonths, selectedTown, selectedStreetNames, selectedBlocks, selectedFlatType, months, towns, streets, blocks, flatTypes });
-            // setStreets(values.filterStreets);
+            setStreets(values.filterStreets);
             setBlocks(values.filterBlocks);
             setFlatTypes(values.filterFlatTypes);
             setMonths(values.filterMonths);

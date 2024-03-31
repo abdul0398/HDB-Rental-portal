@@ -44,10 +44,10 @@ export default function Blocks() {
     }, [])
 
     useEffect (() => {
-        if (!isReady) return;
+        // if (!isReady) return;
         async function fetchData() {
             const values:filterHandlerReturn = await filterHandler({ selectedMonths, selectedTown, selectedStreetNames, selectedBlocks, selectedFlatType, months, towns, streets, blocks, flatTypes });
-// ?            setStreets(values.filterStreets);
+            setStreets(values.filterStreets);
             setFlatTypes(values.filterFlatTypes);
             setMonths(values.filterMonths);
             setTowns(values.filterTowns);

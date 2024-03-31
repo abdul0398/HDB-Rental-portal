@@ -1,4 +1,4 @@
-'use server'
+// 'use server'
 import data from "@/data/transaction.json";
 import { FilterHandlerParams, filterHandlerReturn } from "@/types/data";
 
@@ -11,7 +11,7 @@ export const filterHandler = ({
 }: FilterHandlerParams): filterHandlerReturn => {
   const transactions = data as Array<any>;
   const filteredTransaction = transactions.filter((transaction, index) => {
-    if (index > 50000) return false;
+    // if (index > 50000) return false;
     if (selectedTown && transaction.town !== selectedTown) {
       return false;
     }
@@ -47,11 +47,11 @@ export const filterHandler = ({
   const filterTowns = [
     ...new Set(filteredTransaction.map((transaction) => transaction.town)),
   ];
-  // const filterStreets = [
-  //   ...new Set(
-  //     filteredTransaction.map((transaction) => transaction.street_name)
-  //   ),
-  // ];
+  const filterStreets = [
+    ...new Set(
+      filteredTransaction.map((transaction) => transaction.street_name)
+    ),
+  ];
   const filterBlocks = [
     ...new Set(filteredTransaction.map((transaction) => transaction.block)),
   ];
@@ -61,14 +61,14 @@ export const filterHandler = ({
 
   filterMonths.sort();
   filterTowns.sort();
-  // filterStreets.sort();
+  filterStreets.sort();
   filterBlocks.sort();
   filterFlatTypes.sort();
 
   return {
     filterMonths,
     filterTowns,
-    // filterStreets :[],
+    filterStreets,
     filterBlocks,
     filterFlatTypes,
     filteredTransaction,

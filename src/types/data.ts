@@ -20,7 +20,7 @@ export type FilterHandlerParams = {
    export type filterHandlerReturn = {
     filterMonths : string[];
     filterTowns : string[];
-    // filterStreets : string[];
+    filterStreets : string[];
     filterBlocks : string[];
     filterFlatTypes : string[];
     filteredTransaction : any[];
