@@ -1,7 +1,7 @@
 import React, { useState, useContext, useEffect } from 'react';
 import { MyContext } from "@/context/context";
 import { filterHandlerReturn } from '@/types/data';
-import { filterHandler } from '@/actions/filterHandler';
+import { filterHandler } from '@/app/actions/filterHandler';
 
 export default function Blocks() {
     const {

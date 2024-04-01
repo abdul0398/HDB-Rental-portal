@@ -1,15 +1,16 @@
-// 'use server'
+'use server'
 import data from "@/data/transaction.json";
 import { FilterHandlerParams, filterHandlerReturn } from "@/types/data";
 
-export const filterHandler = ({
+export const filterHandler = async  ({
   selectedMonths,
   selectedTown,
   selectedStreetNames,
   selectedFlatType,
   selectedBlocks,
-}: FilterHandlerParams): filterHandlerReturn => {
+}: FilterHandlerParams): Promise<filterHandlerReturn> => {
   const transactions = data as Array<any>;
+  console.log("index");
   const filteredTransaction = transactions.filter((transaction, index) => {
     // if (index > 50000) return false;
     if (selectedTown && transaction.town !== selectedTown) {

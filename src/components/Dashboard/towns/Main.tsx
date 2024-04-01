@@ -6,7 +6,7 @@ import { MyContext } from "@/context/context";
 import {
     towns as defaultTowns,
 } from "@/data/constants";
-import { filterHandler } from "@/actions/filterHandler";
+import { filterHandler } from "@/app/actions/filterHandler";
 import { filterHandlerReturn } from "@/types/data";
 
 export default function Towns() {

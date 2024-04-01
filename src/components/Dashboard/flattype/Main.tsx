@@ -1,6 +1,6 @@
 import { Button } from "@/components/ui/button";
 import { MyContext } from "@/context/context";
-import { filterHandler } from "@/actions/filterHandler";
+import { filterHandler } from "@/app/actions/filterHandler";
 import { filterHandlerReturn } from "@/types/data";
 import React, { useContext, useEffect, useMemo } from "react";
 

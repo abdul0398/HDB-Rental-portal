@@ -3,7 +3,7 @@ import { FixedSizeList as List } from 'react-window';
 import { Input } from "@/components/ui/input";
 import { MyContext } from "@/context/context";
 import { filterHandlerReturn } from '@/types/data';
-import { filterHandler } from '@/actions/filterHandler';
+import { filterHandler } from '@/app/actions/filterHandler';
  
 
 interface RowProps {

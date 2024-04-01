@@ -1,7 +1,7 @@
 import React, { ChangeEvent, FormEvent, useContext, useEffect, useState } from "react";
 import { Checkbox } from "@/components/ui/checkbox";
 import { MyContext } from "@/context/context";
-import { filterHandler } from "@/actions/filterHandler";
+import { filterHandler } from "@/app/actions/filterHandler";
 import { filterHandlerReturn } from "@/types/data";
 
 export default function Months() {
