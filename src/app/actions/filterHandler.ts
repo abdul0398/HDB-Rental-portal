@@ -11,7 +11,13 @@ export const filterHandler = async  ({
 }: FilterHandlerParams): Promise<filterHandlerReturn> => {
   const transactions = data as Array<any>;
   const filteredTransaction = transactions.filter((transaction, index) => {
-    if (index > 80000) return false;
+    // randomly remove 10% of the data
+    if (index % 10 === 0) {
+      return false;
+    }
+
+
+
     if (selectedTown && transaction.town !== selectedTown) {
       return false;
     }
