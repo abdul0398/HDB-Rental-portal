@@ -1,6 +1,7 @@
 'use client'
 import React, { useState, useMemo, useCallback } from "react";
 import Dashboard from "../components/Dashboard/Main";
+import { SpeedInsights } from "@vercel/speed-insights/next"
 import { MyContext } from "@/context/context";
 import { town_flatTypeRelation } from "@/data/towns/town_blockRelation";
 import { street_flatTypeRelation } from "@/data/streets/street_blockRelation";
@@ -44,6 +45,7 @@ export default function Home() {
           <Dashboard />
         </MyContext.Provider>
       </section>
+      <SpeedInsights />
     </main>
  );
 }
