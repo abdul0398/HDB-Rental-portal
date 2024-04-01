@@ -9,11 +9,6 @@ export type FilterHandlerParams = {
     selectedStreetNames: string[];
     selectedBlocks: string[];
     selectedFlatType: string;
-    months: string[];
-    towns: string[];
-    streets: string[];
-    blocks: string[];
-    flatTypes: string[];
    };
 
 

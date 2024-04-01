@@ -5,18 +5,12 @@ import { filterHandler } from '@/app/actions/filterHandler';
 
 export default function Blocks() {
     const {
-        towns,
-        streets,
         blocks,
-        months,
-        flatTypes,
         setStreets,
-        setBlocks,
         setFlatTypes,
         setTowns,
         setMonths,
         selectedTown,
-        setSelectedTown,
         setTransactions,
         selectedMonths,
         selectedBlocks,
@@ -46,7 +40,7 @@ export default function Blocks() {
     useEffect (() => {
         // if (!isReady) return;
         async function fetchData() {
-            const values:filterHandlerReturn = await filterHandler({ selectedMonths, selectedTown, selectedStreetNames, selectedBlocks, selectedFlatType, months, towns, streets, blocks, flatTypes });
+            const values:filterHandlerReturn = await filterHandler({ selectedMonths, selectedTown, selectedStreetNames, selectedBlocks, selectedFlatType});
             setStreets(values.filterStreets);
             setFlatTypes(values.filterFlatTypes);
             setMonths(values.filterMonths);

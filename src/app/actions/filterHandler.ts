@@ -1,4 +1,4 @@
-'use server'
+// 'use server'
 import data from "@/data/transaction.json";
 import { FilterHandlerParams, filterHandlerReturn } from "@/types/data";
 
