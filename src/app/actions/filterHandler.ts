@@ -10,9 +10,8 @@ export const filterHandler = async  ({
   selectedBlocks,
 }: FilterHandlerParams): Promise<filterHandlerReturn> => {
   const transactions = data as Array<any>;
-  console.log("index");
   const filteredTransaction = transactions.filter((transaction, index) => {
-    // if (index > 50000) return false;
+    if (index > 80000) return false;
     if (selectedTown && transaction.town !== selectedTown) {
       return false;
     }

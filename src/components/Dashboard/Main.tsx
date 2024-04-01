@@ -7,6 +7,7 @@ import Transactions from "./transaction-table/Main";
 import TransactionData from "./transaction-table/trnsaction-data";
 import Graph from "./graph/Main";
 
+
 export default function Dashboard() {
     return (
         <section className="mb-52 w-full mt-5 mx-auto bg-gray-100 shadow-md p-3 overflow-auto">
