@@ -9,7 +9,7 @@ import Graph from "./graph/Main";
 
 export default function Dashboard() {
     return (
-        <section className="mb-52 w-[1300px] mt-5 mx-auto bg-gray-100 shadow-md p-3">
+        <section className="mb-52 w-full mt-5 mx-auto bg-gray-100 shadow-md p-3 overflow-auto">
             <Towns />
             <section className="flex mt-5">
                 <div className="w-1/5">

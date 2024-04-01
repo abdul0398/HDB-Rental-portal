@@ -59,11 +59,11 @@ export default function Blocks() {
     return (
         <div className="">
             <h2 className="text-center text-xl">Select Blocks</h2>
-            <div className="mx-4 grid grid-cols-8 h-96 overflow-auto bg-white">
+            <div className="mx-4 grid grid-cols-8 h-96 overflow-auto min-w-[420px] bg-white">
                 {blocks.map((block, i) => (
                     <div
                         key={i}
-                        className={`flex justify-center items-center border size-14 hover:border-slate-700 hover:cursor-pointer ${ selectedBlocks.includes(block)  ? "bg-black text-white" : ""}`}
+                        className={`flex justify-center items-center border hover:border-slate-700 size-12 hover:cursor-pointer ${ selectedBlocks.includes(block)  ? "bg-black text-white" : ""}`}
                         onClick={() => handleBlockClick(block)}
                     >
                         {block}

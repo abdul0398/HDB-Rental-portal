@@ -98,7 +98,7 @@ export default function Streets() {
         <section className="overflow-hidden">
             <h2 className="text-xl mx-auto text-center">Select Streets</h2>
 
-            <div className="p-5 h-96 bg-white overflow-auto">
+            <div className="p-5 h-96 bg-white overflow-auto min-w-[150px]">
                 <Input
                     type="text"
                     className="mx-auto mb-2"
