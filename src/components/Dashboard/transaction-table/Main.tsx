@@ -22,7 +22,7 @@ export default function Transactions() {
  }
 
  return (
-    <div key={index} style={style} className="h-14 grid gap-1 grid-cols-[10%_20%_30%_6%_10%_14%_10%] border-b transition duration-300 ease-in-out hover:bg-neutral-100 dark:border-neutral-500 dark:hover:bg-neutral-600">
+    <div key={index} style={style} className="h-14 grid gap-1 grid-cols-[10%_20%_25%_10%_10%_15%_10%] border-b transition duration-300 ease-in-out hover:bg-neutral-100 dark:border-neutral-500 dark:hover:bg-neutral-600">
       <div className="px-1 font-medium">{transaction._id}</div>
       <div className="px-1">{transaction.town}</div>
       <div className="px-1">{transaction.street_name}</div>
@@ -40,7 +40,7 @@ export default function Transactions() {
         <div className="inline-block min-w-full py-2 sm: lg:px-8">
           <div className="overflow-hidden">
             <div className="min-w-full text-left text-sm font-light overflow-hidden">
-              <div className="border-b font-medium dark:border-neutral-500 grid gap-1 grid-cols-[10%_20%_30%_6%_10%_14%_10%] text-sm">
+              <div className="border-b font-medium dark:border-neutral-500 grid gap-1 grid-cols-[10%_20%_25%_10%_10%_15%_10%] text-sm">
                 <div className="px-1 py-4 text-sm">ID</div>
                 <div className="px-1 py-4 text-sm">TOWN</div>
                 <div className="px-1 py-4 text-sm">STREET</div>
