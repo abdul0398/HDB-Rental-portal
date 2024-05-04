@@ -138,13 +138,6 @@ export const filterHandler = async  ({
 
     
   }
-  
-  // filterBlocks.sort();
-  // filterStreets.sort();
-  // filterTowns.sort();
-  // filterFlatTypes.sort();
-  // filterMonths.sort();
-
 
   return {
     filterMonths :[...new Set(filterMonths)].sort(),

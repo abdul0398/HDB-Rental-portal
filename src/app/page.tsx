@@ -39,8 +39,7 @@ export default function Home() {
 
  return (
     <main className="h-full w-full pt-8">
-      <section className="w-3/4 mx-auto h-full">
-        <h1 className="text-3xl">HDB Rental Rates</h1>
+      <section className="w-full mx-auto h-full">
         <MyContext.Provider value={contextValue}>
           <Dashboard />
         </MyContext.Provider>

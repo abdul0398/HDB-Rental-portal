@@ -36,7 +36,7 @@ export default function Transactions() {
 
  return (
     <div className="flex flex-col bg-white">
-      <div className="overflow-x-auto sm:-mx-6 lg:-mx-8">
+      <div className="sm:-mx-6 lg:-mx-8">
         <div className="inline-block min-w-full py-2 sm: lg:px-8">
           <div className="overflow-hidden">
             <div className="min-w-full text-left text-sm font-light overflow-hidden">

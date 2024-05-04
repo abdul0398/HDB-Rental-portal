@@ -51,9 +51,9 @@ export default function Blocks() {
     }, [selectedBlocks]);
 
     return (
-        <div className="">
+        <div className="border rounded-lg shadow-lg px-2 py-3 mx-1">
             <h2 className="text-center text-xl">Select Blocks</h2>
-            <div className="mx-4 grid grid-cols-8 h-96 overflow-auto min-w-[420px] bg-white">
+            <div className="mx-4 grid grid-cols-8 h-96 overflow-auto bg-white">
                 {blocks.map((block, i) => (
                     <div
                         key={i}

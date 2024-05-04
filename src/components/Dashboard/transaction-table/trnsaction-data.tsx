@@ -12,9 +12,9 @@ const minPrice = Math.min(...transactions.map((transaction) => transaction.month
 
 
     return (
-        <section className="h-96 mx-auto">
+        <section className="mx-auto border rounded-lg shadow-lg px-2 py-3">
             <h2 className="text-xl">Transaction Details</h2>
-            <div className="bg-white h-full">
+            <div className="bg-white">
                 <div className="w-full p-5">
                     <h2 className="font-extrabold text-center">Transactions Count</h2>
                     <p className="text-center">{transactions.length}</p>

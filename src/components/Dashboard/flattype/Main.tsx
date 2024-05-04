@@ -56,7 +56,7 @@ export default function FlatType() {
     };
 
     return (
-        <div className="w-1/5">
+        <div className="lg:w-1/5 md:w-1/5 w-full border rounded-lg shadow-lg px-2 py-3 mx-1">
             <h2 className="text-center text-xl">Select Flat Type</h2>
             <div className="mx-4 h-96 overflow-auto">
                 <div className="flex flex-col gap-7">

@@ -6,25 +6,18 @@ import { filterHandlerReturn } from "@/types/data";
 
 export default function Months() {
     const {
-        towns,
-        streets,
-        blocks,
         months,
-        flatTypes,
         setStreets,
         setBlocks,
         setFlatTypes,
         setTowns,
-        setMonths,
         selectedTown,
         selectedMonths,
         selectedBlocks,
         selectedFlatType,
         selectedStreetNames,
-        setSelectedTown,
         setTransactions,
         setSelectedMonths,
-        setSelectedStreetNames
     } = useContext(MyContext);
 
     const [isReady, setIsReady] = useState(false);
@@ -59,7 +52,7 @@ export default function Months() {
     };
 
     return (
-        <div>
+        <div className="border rounded-lg shadow-lg px-2 py-3 mx-1">
             <h2 className="text-center text-xl">Select Month</h2>
             <div className="mx-4 h-96 overflow-auto bg-white">
                 <div className="flex flex-col gap-2 p-5 overflow-auto">
