@@ -8,14 +8,12 @@ import {
 } from "@/data/constants";
 import { filterHandler } from "@/app/actions/filterHandler";
 import { filterHandlerReturn } from "@/types/data";
+import {MdChevronRight, MdChevronLeft} from "react-icons/md";
 
 export default function Towns() {
     const {
         towns,
-        streets,
-        blocks,
-        months,
-        flatTypes,
+       
         setStreets,
         setBlocks,
         setFlatTypes,
@@ -70,6 +68,20 @@ export default function Towns() {
         setSelectedMonths([]);
         setSelectedStreetNames([]);
     };
+
+    const slideLeft = () => {
+        const slider = document.getElementById("slider") as HTMLElement;
+        slider.scrollLeft += 400;
+    }
+
+    const slideRight = () => {
+        const slider = document.getElementById("slider") as HTMLElement;
+        slider.scrollLeft -= 400;
+    }
+
+
+
+
     return (
         <section className="pt-3">
             <div className="relative">
@@ -82,17 +94,21 @@ export default function Towns() {
                     Reset
                 </Button>
             </div>
-            <div className="mt-5 text-center">
+            <div className="mt-5 text-center relative flex items-center">
+                <MdChevronLeft onClick={()=>{slideRight()}} className=" text-2xl cursor-pointer" />
+                <div id="slider" className="overflow-x-scroll scroll-smooth mx-auto overflow-y-hidden whitespace-nowrap w-3/4 h-11">
                 {towns.map((town, index) => (
                     <Button
-                        key={index}
-                        variant={selectedTown === town ? "default" : "outline"}
-                        className="m-1"
-                        onClick={() => handleTownClick(town)}
+                    key={index}
+                    variant={selectedTown === town ? "default" : "outline"}
+                    className="m-1"
+                    onClick={() => handleTownClick(town)}
                     >
                         {town}
                     </Button>
                 ))}
+                </div>
+                <MdChevronRight onClick={()=>{slideLeft()}} className="text-2xl cursor-pointer" />
             </div>
         </section>
     );
