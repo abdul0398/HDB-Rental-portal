@@ -1,13 +1,18 @@
 'use client'
 import React, { useState, useMemo, useCallback } from "react";
-import Dashboard from "../components/Dashboard/Main";
 import { SpeedInsights } from "@vercel/speed-insights/next"
 import { MyContext } from "@/context/context";
+import dynamic from 'next/dynamic';
 import { town_flatTypeRelation } from "@/data/towns/town_blockRelation";
 import { street_flatTypeRelation } from "@/data/streets/street_blockRelation";
 import { block_flat_typeRelation } from "@/data/blocks/block_dateRelation";
 import { flat_type_townRelation } from "@/data/flatType/flat_type_blockRelation";
 import { date_townRelation } from "@/data/date/date_blockRelation";
+const Dashboard = dynamic(
+  () => import('@/components/Dashboard/Main'),
+  { ssr: false }
+);
+
 
 export default function Home() {
  const [towns, setTowns] = useState<string[]>(Object.keys(town_flatTypeRelation));

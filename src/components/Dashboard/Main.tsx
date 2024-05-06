@@ -19,6 +19,9 @@ const Sidebar = dynamic(
 
 export default function Dashboard() {
     const [selected, setSelected] = useState<string | null>("");
+    const [isOpen, setIsOpen] = useState(true);
+
+    
     const mq = useRef(window.matchMedia("(max-width: 498px)"));
 
     const scrollHandler = (event: MouseEvent<HTMLAnchorElement, MouseEvent>) => {
@@ -29,6 +32,8 @@ export default function Dashboard() {
                 targetElement.scrollIntoView({ behavior: 'smooth' });
             }
         }
+
+        if(mq.current.matches) setIsOpen(false);
         
 
         setSelected(targetId)
@@ -38,7 +43,7 @@ export default function Dashboard() {
 
     return (
         <div>
-            <Sidebar scrollHandler={scrollHandler} selected={selected} />
+            <Sidebar scrollHandler={scrollHandler} selected={selected} isOpen={isOpen} setIsOpen={setIsOpen} />
             <main id="filters" className="mb-52 sm:w-5/6 w-full mt-5 ms-auto shadow-md p-3 overflow-auto">
                 <Towns />
 

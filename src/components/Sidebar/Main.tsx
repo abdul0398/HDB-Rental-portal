@@ -1,11 +1,10 @@
 'use client'
 
 import Image from "next/image"
-import { useEffect, useRef, useState } from "react"
+import React, { useEffect, useRef, useState } from "react"
 
 
-export default function Sidebar({scrollHandler, selected}:{scrollHandler:Function, selected:string | null}) {
-    const [isOpen, setIsOpen] = useState(true);
+export default function Sidebar({scrollHandler, selected, isOpen, setIsOpen}:{scrollHandler:Function, selected:string | null, isOpen:boolean, setIsOpen:React.Dispatch<React.SetStateAction<boolean>>}) {
     const mq = useRef(window.matchMedia("(max-width: 498px)"));
 
     useEffect(() => {
