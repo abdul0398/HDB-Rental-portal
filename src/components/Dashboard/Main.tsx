@@ -49,7 +49,7 @@ export default function Dashboard() {
 
                 <section className="w-full mt-5">
                     <div id="graphs" className="w-full h-full px-9 py-3 rounded-lg shadow-lg border mt-10">
-                        <div className="flex gap-1 flex-wrap mx-auto w-fit">
+                        <div className="flex gap-1 flex-wrap mx-auto justify-center w-fit">
                             <h2 className="text-xl text-center">Rental Trend By Flat Type</h2>
                             <Streets />
                             <Blocks />
