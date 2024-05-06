@@ -16,8 +16,8 @@ export default function Home() {
  const [flatTypes, setFlatTypes] = useState<string[]>(Object.keys(flat_type_townRelation));
  const [months, setMonths] = useState<string[]>(Object.keys(date_townRelation));
  const [selectedTown, setSelectedTown] = useState<string>('');
- const [selectedStreetNames, setSelectedStreetNames] = useState<string[]>([]);
- const [selectedBlocks, setSelectedBlocks] = useState<string[]>([]);
+ const [selectedStreetName, setSelectedStreetName] = useState<string>("");
+ const [selectedBlock, setSelectedBlock] = useState<string>("");
  const [selectedFlatType, setSelectedFlatType] = useState<string>('');
  const [selectedMonths, setSelectedMonths] = useState<string[]>([]);
  const [transactions, setTransactions] = useState<any[]>([]);
@@ -31,11 +31,11 @@ export default function Home() {
     flatTypes, setFlatTypes,
     months, setMonths,
     selectedTown, setSelectedTown,
-    selectedStreetNames, setSelectedStreetNames,
-    selectedBlocks, setSelectedBlocks,
+    selectedStreetName, setSelectedStreetName,
+    selectedBlock, setSelectedBlock,
     selectedFlatType, setSelectedFlatType,
     selectedMonths, setSelectedMonths
- }), [transactions, towns, streets, blocks, flatTypes, months, selectedTown, selectedStreetNames, selectedBlocks, selectedFlatType, selectedMonths]);
+ }), [transactions, towns, streets, blocks, flatTypes, months, selectedTown, selectedStreetName, selectedBlock, selectedFlatType, selectedMonths]);
 
  return (
     <main className="h-full w-full pt-8">

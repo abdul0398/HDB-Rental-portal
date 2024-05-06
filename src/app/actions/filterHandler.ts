@@ -5,9 +5,9 @@ import { FilterHandlerParams, filterHandlerReturn, transactiontype } from "@/typ
 export const filterHandler = async  ({
   selectedMonths,
   selectedTown,
-  selectedStreetNames,
+  selectedStreetName,
   selectedFlatType,
-  selectedBlocks,
+  selectedBlock,
 }: FilterHandlerParams): Promise<filterHandlerReturn> => {
   const transactions = data as Array<transactiontype>;
 
@@ -43,16 +43,16 @@ export const filterHandler = async  ({
       isTownPresent = true;
     }
 
-    if (selectedStreetNames.length > 0) {
-      if (selectedStreetNames.includes(street)) {
+    if (selectedStreetName) {
+      if (selectedStreetName == street) {
         isStreetPresent = true;
       }
     } else {
       isStreetPresent = true;
     }
 
-    if (selectedBlocks.length > 0) {
-      if (selectedBlocks.includes(block)) {
+    if (selectedBlock) {
+      if (selectedBlock == block) {
         isBlockPresent = true;
       }
     } else {

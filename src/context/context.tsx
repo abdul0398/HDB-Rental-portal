@@ -14,10 +14,10 @@ interface MyContextValue {
   setMonths: React.Dispatch<React.SetStateAction<string[]>>;
   selectedTown: string;
   setSelectedTown: React.Dispatch<React.SetStateAction<string>>;
-  selectedStreetNames: string[];
-  setSelectedStreetNames: React.Dispatch<React.SetStateAction<string[]>>;
-  selectedBlocks: string[];
-  setSelectedBlocks: React.Dispatch<React.SetStateAction<string[]>>;
+  selectedStreetName: string;
+  setSelectedStreetName: React.Dispatch<React.SetStateAction<string>>;
+  selectedBlock: string;
+  setSelectedBlock: React.Dispatch<React.SetStateAction<string>>;
   selectedFlatType: string;
   setSelectedFlatType: React.Dispatch<React.SetStateAction<string>>;
   selectedMonths: string[];
@@ -40,10 +40,10 @@ export const MyContext = createContext<MyContextValue>({
   setMonths: () => { },
   selectedTown: '',
   setSelectedTown: () => { },
-  selectedStreetNames: [],
-  setSelectedStreetNames: () => { },
-  selectedBlocks: [],
-  setSelectedBlocks: () => { },
+  selectedStreetName: "",
+  setSelectedStreetName: () => { },
+  selectedBlock: "",
+  setSelectedBlock: () => { },
   selectedFlatType: '',
   setSelectedFlatType: () => { },
   selectedMonths: [],
@@ -60,8 +60,8 @@ const TodoProvider: React.FC<{ children: ReactNode }> = ({ children }) => {
   const [flatTypes, setFlatTypes] = useState<string[]>([]);
   const [months, setMonths] = useState<string[]>([]);
   const [selectedTown, setSelectedTown] = useState<string>('');
-  const [selectedStreetNames, setSelectedStreetNames] = useState<string[]>([]);
-  const [selectedBlocks, setSelectedBlocks] = useState<string[]>([]);
+  const [selectedStreetName, setSelectedStreetName] = useState<string>("");
+  const [selectedBlock, setSelectedBlock] = useState<string>("");
   const [selectedFlatType, setSelectedFlatType] = useState<string>('');
   const [selectedMonths, setSelectedMonths] = useState<string[]>([]);
   const [transactions, setTransactions] = useState<any[]>([]);
@@ -69,7 +69,7 @@ const TodoProvider: React.FC<{ children: ReactNode }> = ({ children }) => {
 
   // Provide the context value to children
   return (
-    <MyContext.Provider value={{ transactions, setTransactions, towns, setTowns, streets, setStreets, blocks, setBlocks, flatTypes, setFlatTypes, months, setMonths, selectedTown, setSelectedTown, setSelectedStreetNames, selectedStreetNames, selectedBlocks, setSelectedBlocks, selectedFlatType, setSelectedFlatType, selectedMonths, setSelectedMonths }}>
+    <MyContext.Provider value={{ transactions, setTransactions, towns, setTowns, streets, setStreets, blocks, setBlocks, flatTypes, setFlatTypes, months, setMonths, selectedTown, setSelectedTown, setSelectedStreetName, selectedStreetName, selectedBlock, setSelectedBlock, selectedFlatType, setSelectedFlatType, selectedMonths, setSelectedMonths }}>
       {children}
     </MyContext.Provider>
   );

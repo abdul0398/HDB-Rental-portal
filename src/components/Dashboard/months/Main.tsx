@@ -1,8 +1,9 @@
-import React, { ChangeEvent, FormEvent, useContext, useEffect, useState } from "react";
-import { Checkbox } from "@/components/ui/checkbox";
+import React, { ChangeEvent, useContext, useEffect, useState } from "react";
 import { MyContext } from "@/context/context";
 import { filterHandler } from "@/app/actions/filterHandler";
 import { filterHandlerReturn } from "@/types/data";
+import { DayPicker } from 'react-day-picker';
+import 'react-day-picker/dist/style.css';
 
 export default function Months() {
     const {
@@ -13,32 +14,33 @@ export default function Months() {
         setTowns,
         selectedTown,
         selectedMonths,
-        selectedBlocks,
+        selectedBlock,
         selectedFlatType,
-        selectedStreetNames,
+        selectedStreetName,
         setTransactions,
         setSelectedMonths,
     } = useContext(MyContext);
 
     const [isReady, setIsReady] = useState(false);
+    const [value, setValue] = React.useState<Date | null>(new Date());
 
     useEffect(() => {
         // Set isReady to true after the initial render
         setIsReady(true);
-    },[])
+    }, [])
 
 
     useEffect(() => {
-       if (!isReady) return;
-       async function fetchData() {
-        const values:filterHandlerReturn = await filterHandler({ selectedMonths, selectedTown, selectedStreetNames, selectedBlocks, selectedFlatType});
-        setStreets(values.filterStreets);
-        setBlocks(values.filterBlocks);
-        setFlatTypes(values.filterFlatTypes);
-        setTowns(values.filterTowns);
-        setTransactions(values.filteredTransaction);
-    }
-    fetchData();
+        if (!isReady) return;
+        async function fetchData() {
+            const values: filterHandlerReturn = await filterHandler({ selectedMonths, selectedTown, selectedStreetName, selectedBlock, selectedFlatType });
+            setStreets(values.filterStreets);
+            setBlocks(values.filterBlocks);
+            setFlatTypes(values.filterFlatTypes);
+            setTowns(values.filterTowns);
+            setTransactions(values.filteredTransaction);
+        }
+        fetchData();
     }, [selectedMonths]);
 
     const onCheckboxChange = (e: ChangeEvent<HTMLInputElement>, month: string) => {
@@ -68,5 +70,6 @@ export default function Months() {
                 </div>
             </div>
         </div>
+        // <DayPicker />
     );
 }

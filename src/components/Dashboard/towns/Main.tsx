@@ -13,7 +13,6 @@ import {MdChevronRight, MdChevronLeft} from "react-icons/md";
 export default function Towns() {
     const {
         towns,
-       
         setStreets,
         setBlocks,
         setFlatTypes,
@@ -22,14 +21,14 @@ export default function Towns() {
         selectedTown,
         setSelectedTown,
         setTransactions,
-        setSelectedBlocks,
+        setSelectedBlock,
         setSelectedFlatType,
         setSelectedMonths,
-        setSelectedStreetNames,
+        setSelectedStreetName,
         selectedMonths,
-        selectedBlocks,
+        selectedBlock,
         selectedFlatType,
-        selectedStreetNames,
+        selectedStreetName,
     } = useContext(MyContext);
     const handleTownClick = (town: string) => {
         if (selectedTown === town) {
@@ -50,7 +49,7 @@ export default function Towns() {
     useEffect(() => {  
         if (!isReady) return;
         async function fetchData() {
-            const values:filterHandlerReturn = await filterHandler({ selectedMonths, selectedTown, selectedStreetNames, selectedBlocks, selectedFlatType});
+            const values:filterHandlerReturn = await filterHandler({ selectedMonths, selectedTown, selectedStreetName, selectedBlock, selectedFlatType});
             setStreets(values.filterStreets);
             setBlocks(values.filterBlocks);
             setFlatTypes(values.filterFlatTypes);
@@ -63,10 +62,10 @@ export default function Towns() {
 
     const handleReset = () => {
         setSelectedTown("");
-        setSelectedBlocks([]);
+        setSelectedBlock("");
         setSelectedFlatType("");
         setSelectedMonths([]);
-        setSelectedStreetNames([]);
+        setSelectedStreetName("");
     };
 
     const slideLeft = () => {

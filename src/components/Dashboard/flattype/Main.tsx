@@ -3,13 +3,11 @@ import { MyContext } from "@/context/context";
 import { filterHandler } from "@/app/actions/filterHandler";
 import { filterHandlerReturn } from "@/types/data";
 import React, { useContext, useEffect, useMemo } from "react";
+import WindowedSelect from "react-windowed-select";
 
 export default function FlatType() {
     const {
-        towns,
-        streets,
-        blocks,
-        months,
+
         flatTypes,
         setStreets,
         setBlocks,
@@ -18,16 +16,14 @@ export default function FlatType() {
         setTowns,
         selectedTown,
         selectedMonths,
-        selectedBlocks,
+        selectedBlock,
         selectedFlatType,
-        setSelectedTown,
         setTransactions,
         setSelectedFlatType,
-        setSelectedBlocks,
-        selectedStreetNames,
+        selectedStreetName,
     } = useContext(MyContext);
 
-    const handleButtonClick = (flatType :string) => {
+    const handleButtonClick = (flatType: string) => {
         setSelectedFlatType(selectedFlatType === flatType ? "" : flatType);
     };
 
@@ -36,11 +32,11 @@ export default function FlatType() {
         // Set isReady to true after the initial render
         setIsReady(true);
     }, [])
-    
+
     useEffect(() => {
         if (!isReady) return;
         async function fetchData() {
-            const values:filterHandlerReturn = await filterHandler({ selectedMonths, selectedTown, selectedStreetNames, selectedBlocks, selectedFlatType});
+            const values: filterHandlerReturn = await filterHandler({ selectedMonths, selectedTown, selectedStreetName, selectedBlock, selectedFlatType });
             setStreets(values.filterStreets);
             setBlocks(values.filterBlocks);
             setFlatTypes(values.filterFlatTypes);
@@ -51,27 +47,31 @@ export default function FlatType() {
         fetchData();
     }, [selectedFlatType]);
 
-    const getButtonClassName = (type : string) => {
+    const getButtonClassName = (type: string) => {
         return selectedFlatType === type ? 'bg-black text-white hover:bg-black hover:text-white' : '';
     };
 
+    const handleSelect = (e: any) => {
+        setSelectedFlatType(e.value as string);
+    }
+
+    const options = flatTypes.map((flatType) => {
+        return {
+            value: flatType,
+            label: flatType,
+        }
+    })
+
+
     return (
-        <div className="lg:w-1/5 md:w-1/5 w-full border rounded-lg shadow-lg px-2 py-3 mx-1">
-            <h2 className="text-center text-xl">Select Flat Type</h2>
-            <div className="mx-4 h-96 overflow-auto">
-                <div className="flex flex-col gap-7">
-                    {flatTypes.map((type, index) => (
-                        <Button
-                            key={index}
-                            variant="outline"
-                            onClick={() => handleButtonClick(type)}
-                            className={getButtonClassName(type)}
-                        >
-                            {type}
-                        </Button>
-                    ))}
-                </div>
-            </div>
+        <div className="w-56 ms-3">
+            {/* <h2 className="text-center text-xl">Select Flat Type</h2> */}
+                    <WindowedSelect
+                    placeholder="Select Flat Type"
+                        options={options}
+                        windowThreshold={50}
+                        onChange={(e: any) => handleSelect(e)}
+                    />
         </div>
     );
 }

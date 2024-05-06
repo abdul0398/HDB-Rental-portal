@@ -2,6 +2,7 @@ import React, { useState, useContext, useEffect } from 'react';
 import { MyContext } from "@/context/context";
 import { filterHandlerReturn } from '@/types/data';
 import { filterHandler } from '@/app/actions/filterHandler';
+import WindowedSelect from 'react-windowed-select';
 
 export default function Blocks() {
     const {
@@ -13,34 +14,23 @@ export default function Blocks() {
         selectedTown,
         setTransactions,
         selectedMonths,
-        selectedBlocks,
-        setSelectedBlocks,
+        selectedBlock,
+        setSelectedBlock,
         selectedFlatType,
-        selectedStreetNames,
+        selectedStreetName,
     } = useContext(MyContext);
+    const [isReady, setIsReady] = useState(false);
 
-    const handleBlockClick = (block:string) => {
-        setSelectedBlocks(prev => {
-            const newSelectedBlocks = [...prev]
-            if (newSelectedBlocks.includes(block)) {
-                newSelectedBlocks.splice(newSelectedBlocks.indexOf(block), 1);
-            } else {
-                newSelectedBlocks.push(block);
-            }
-            return newSelectedBlocks;
-        });
-    };
 
-        const [isReady, setIsReady] = useState(false);
     useEffect(() => {
         setIsReady(true);
 
     }, [])
 
-    useEffect (() => {
+    useEffect(() => {
         // if (!isReady) return;
         async function fetchData() {
-            const values:filterHandlerReturn = await filterHandler({ selectedMonths, selectedTown, selectedStreetNames, selectedBlocks, selectedFlatType});
+            const values: filterHandlerReturn = await filterHandler({ selectedMonths, selectedTown, selectedStreetName, selectedBlock, selectedFlatType });
             setStreets(values.filterStreets);
             setFlatTypes(values.filterFlatTypes);
             setMonths(values.filterMonths);
@@ -48,22 +38,31 @@ export default function Blocks() {
             setTransactions(values.filteredTransaction);
         }
         fetchData();
-    }, [selectedBlocks]);
+    }, [selectedBlock]);
+
+
+    const handleSelect = (e: any) => {
+        setSelectedBlock(e.value as string);
+    }
+
+    const options = blocks.map((block) => {
+        return {
+            value: block,
+            label: block,
+        }
+    })
+
+
 
     return (
-        <div className="border rounded-lg shadow-lg px-2 py-3 mx-1">
-            <h2 className="text-center text-xl">Select Blocks</h2>
-            <div className="mx-4 grid grid-cols-8 h-96 overflow-auto bg-white">
-                {blocks.map((block, i) => (
-                    <div
-                        key={i}
-                        className={`flex justify-center items-center border hover:border-slate-700 size-12 hover:cursor-pointer ${ selectedBlocks.includes(block)  ? "bg-black text-white" : ""}`}
-                        onClick={() => handleBlockClick(block)}
-                    >
-                        {block}
-                    </div>
-                ))}
-            </div>
+        <div className="w-56 ms-3">
+            {/* <h2 className="text-center text-xl">Select Blocks</h2> */}
+            <WindowedSelect
+                placeholder="Select Block"
+                options={options}
+                windowThreshold={50}
+                onChange={(e: any) => handleSelect(e)}
+            />
         </div>
     );
 }
