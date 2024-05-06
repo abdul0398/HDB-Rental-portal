@@ -61,6 +61,7 @@ export default function Streets() {
             placeholder="Select Street"
                 options={options}
                 windowThreshold={50}
+                value={selectedStreetName ? { value: selectedStreetName, label: selectedStreetName } : null}
                 onChange={(e :any) => handleSelect(e)}
             />
         </section>

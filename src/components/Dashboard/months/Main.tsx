@@ -2,7 +2,6 @@ import React, { ChangeEvent, useContext, useEffect, useState } from "react";
 import { MyContext } from "@/context/context";
 import { filterHandler } from "@/app/actions/filterHandler";
 import { filterHandlerReturn } from "@/types/data";
-import { DayPicker } from 'react-day-picker';
 import 'react-day-picker/dist/style.css';
 
 export default function Months() {
@@ -22,7 +21,11 @@ export default function Months() {
     } = useContext(MyContext);
 
     const [isReady, setIsReady] = useState(false);
-    const [value, setValue] = React.useState<Date | null>(new Date());
+    const [selectedMonthData, setSelectedMonthData] = useState({
+        month: 9,
+        year: 2023,
+    });
+    const [isPickerOpen, setIsPickerOpen] = useState(false);
 
     useEffect(() => {
         // Set isReady to true after the initial render
@@ -69,7 +72,6 @@ export default function Months() {
                     ))}
                 </div>
             </div>
-        </div>
-        // <DayPicker />
+       </div>
     );
 }

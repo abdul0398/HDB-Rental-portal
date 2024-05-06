@@ -69,6 +69,7 @@ export default function FlatType() {
                     <WindowedSelect
                     placeholder="Select Flat Type"
                         options={options}
+                        value={selectedFlatType ? { value: selectedFlatType, label: selectedFlatType } : null}
                         windowThreshold={50}
                         onChange={(e: any) => handleSelect(e)}
                     />

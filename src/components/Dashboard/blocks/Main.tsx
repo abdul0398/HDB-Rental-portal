@@ -60,6 +60,7 @@ export default function Blocks() {
             <WindowedSelect
                 placeholder="Select Block"
                 options={options}
+                value={selectedBlock ? { value: selectedBlock, label: selectedBlock } : null}
                 windowThreshold={50}
                 onChange={(e: any) => handleSelect(e)}
             />

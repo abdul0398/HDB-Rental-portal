@@ -8,7 +8,7 @@ import Transactions from "./transaction-table/Main";
 import TransactionData from "./transaction-table/trnsaction-data";
 import Graph from "./graph/Main";
 import dynamic from 'next/dynamic';
-import { MouseEvent, useState } from "react";
+import { MouseEvent, useRef, useState } from "react";
 
 const Sidebar = dynamic(
     () => import('@/components/Sidebar/Main'),
@@ -19,7 +19,7 @@ const Sidebar = dynamic(
 
 export default function Dashboard() {
     const [selected, setSelected] = useState<string | null>("");
-
+    const mq = useRef(window.matchMedia("(max-width: 498px)"));
 
     const scrollHandler = (event: MouseEvent<HTMLAnchorElement, MouseEvent>) => {
         const targetId = event.currentTarget.getAttribute('data-target');
@@ -29,6 +29,8 @@ export default function Dashboard() {
                 targetElement.scrollIntoView({ behavior: 'smooth' });
             }
         }
+        
+
         setSelected(targetId)
     }
 
