@@ -1,7 +1,7 @@
 'use client'
 
 import Image from "next/image"
-import React, { useEffect, useRef, useState } from "react"
+import React, { useEffect, useRef } from "react"
 
 
 export default function Sidebar({scrollHandler, selected, isOpen, setIsOpen}:{scrollHandler:Function, selected:string | null, isOpen:boolean, setIsOpen:React.Dispatch<React.SetStateAction<boolean>>}) {
@@ -58,15 +58,15 @@ export default function Sidebar({scrollHandler, selected, isOpen, setIsOpen}:{sc
                                 </a>
                             </li>
                             <li>
-                                <a onClick={(event)=>scrollHandler(event)} data-target="transactions" className={`flex items-center ms-auto p-2 w-[90%] rounded-s-3xl  ${selected == "transactions"? "bg-white text-black":"hover:bg-white hover:text-black"}`}>
-
-                                    <span className="flex-1 ps-5 ms-3 text-xl whitespace-nowrap font-sans cursor-pointer">Transactions</span>
-                                </a>
-                            </li>
-                            <li>
                                 <a onClick={(event)=>scrollHandler(event)} data-target="graphs" className={`flex items-center ms-auto p-2 w-[90%] rounded-s-3xl ${selected == "graphs"? "bg-white text-black":"hover:bg-white hover:text-black"}`}>
 
                                     <span className="flex-1 ps-5 ms-3 text-xl whitespace-nowrap font-sans cursor-pointer">Graphs</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a onClick={(event)=>scrollHandler(event)} data-target="transactions" className={`flex items-center ms-auto p-2 w-[90%] rounded-s-3xl  ${selected == "transactions"? "bg-white text-black":"hover:bg-white hover:text-black"}`}>
+
+                                    <span className="flex-1 ps-5 ms-3 text-xl whitespace-nowrap font-sans cursor-pointer">Transactions</span>
                                 </a>
                             </li>
 

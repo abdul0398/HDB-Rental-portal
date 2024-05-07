@@ -24,7 +24,7 @@ export default function Home() {
  const [selectedStreetName, setSelectedStreetName] = useState<string>("");
  const [selectedBlock, setSelectedBlock] = useState<string>("");
  const [selectedFlatType, setSelectedFlatType] = useState<string>('');
- const [selectedMonths, setSelectedMonths] = useState<string[]>([]);
+ const [selectedMonth, setSelectedMonth] = useState<string>('');
  const [transactions, setTransactions] = useState<any[]>([]);
 
  // Memoize context value to prevent unnecessary re-renders
@@ -39,8 +39,8 @@ export default function Home() {
     selectedStreetName, setSelectedStreetName,
     selectedBlock, setSelectedBlock,
     selectedFlatType, setSelectedFlatType,
-    selectedMonths, setSelectedMonths
- }), [transactions, towns, streets, blocks, flatTypes, months, selectedTown, selectedStreetName, selectedBlock, selectedFlatType, selectedMonths]);
+    selectedMonth, setSelectedMonth
+ }), [transactions, towns, streets, blocks, flatTypes, months, selectedTown, selectedStreetName, selectedBlock, selectedFlatType, selectedMonth]);
 
  return (
     <main className="h-full w-full pt-8">

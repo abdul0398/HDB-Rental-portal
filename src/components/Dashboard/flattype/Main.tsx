@@ -66,13 +66,13 @@ export default function FlatType() {
     return (
         <div className="w-56 ms-3">
             {/* <h2 className="text-center text-xl">Select Flat Type</h2> */}
-                    <WindowedSelect
-                    placeholder="Select Flat Type"
-                        options={options}
-                        value={selectedFlatType ? { value: selectedFlatType, label: selectedFlatType } : null}
-                        windowThreshold={50}
-                        onChange={(e: any) => handleSelect(e)}
-                    />
+            <WindowedSelect
+                placeholder="Select Flat Type"
+                options={options}
+                value={selectedFlatType ? { value: selectedFlatType, label: selectedFlatType } : null}
+                windowThreshold={50}
+                onChange={(e: any) => handleSelect(e)}
+            />
         </div>
     );
 }

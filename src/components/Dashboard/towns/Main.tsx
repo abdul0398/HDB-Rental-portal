@@ -1,11 +1,7 @@
 "use client";
-
 import React, { useState, useContext, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { MyContext } from "@/context/context";
-import {
-    towns as defaultTowns,
-} from "@/data/constants";
 import { filterHandler } from "@/app/actions/filterHandler";
 import { filterHandlerReturn } from "@/types/data";
 import {MdChevronRight, MdChevronLeft} from "react-icons/md";
@@ -21,11 +17,7 @@ export default function Towns() {
         selectedTown,
         setSelectedTown,
         setTransactions,
-        setSelectedBlock,
-        setSelectedFlatType,
-        setSelectedMonths,
-        setSelectedStreetName,
-        selectedMonths,
+        selectedMonth ,
         selectedBlock,
         selectedFlatType,
         selectedStreetName,
@@ -49,7 +41,7 @@ export default function Towns() {
     useEffect(() => {  
         if (!isReady) return;
         async function fetchData() {
-            const values:filterHandlerReturn = await filterHandler({ selectedMonths, selectedTown, selectedStreetName, selectedBlock, selectedFlatType});
+            const values:filterHandlerReturn = await filterHandler({ selectedMonth , selectedTown, selectedStreetName, selectedBlock, selectedFlatType});
             setStreets(values.filterStreets);
             setBlocks(values.filterBlocks);
             setFlatTypes(values.filterFlatTypes);
@@ -60,13 +52,7 @@ export default function Towns() {
         fetchData();
     }, [selectedTown]);
 
-    const handleReset = () => {
-        setSelectedTown("");
-        setSelectedBlock("");
-        setSelectedFlatType("");
-        setSelectedMonths([]);
-        setSelectedStreetName("");
-    };
+   
 
     const slideLeft = () => {
         const slider = document.getElementById("slider") as HTMLElement;
@@ -82,20 +68,11 @@ export default function Towns() {
 
 
     return (
-        <section className="pt-3">
-            <div className="relative">
-                <h2 className="text-center text-xl w-full">Select Your Town</h2>
-                <Button
-                    variant="default"
-                    className="me-2 absolute right-1 top-0"
-                    onClick={handleReset}
-                >
-                    Reset
-                </Button>
-            </div>
+        <section className="pt-3 w-full md:w-1/2 lg:w-1/2">
+            <h2 className="text-center text-xl w-full">Select Your Town</h2>
             <div className="mt-5 text-center relative flex items-center">
                 <MdChevronLeft onClick={()=>{slideRight()}} className=" text-2xl cursor-pointer" />
-                <div id="slider" className="overflow-x-scroll scroll-smooth mx-auto overflow-y-hidden whitespace-nowrap w-3/4 h-11">
+                <div id="slider" className="overflow-x-scroll scroll-smooth mx-auto overflow-y-hidden whitespace-nowrap w-3/4 h-11 no-scrollbar">
                 {towns.map((town, index) => (
                     <Button
                     key={index}

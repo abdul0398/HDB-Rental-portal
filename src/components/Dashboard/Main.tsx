@@ -8,7 +8,9 @@ import Transactions from "./transaction-table/Main";
 import TransactionData from "./transaction-table/trnsaction-data";
 import Graph from "./graph/Main";
 import dynamic from 'next/dynamic';
-import { MouseEvent, useRef, useState } from "react";
+import { MouseEvent, useContext, useRef, useState } from "react";
+import { Button } from "../ui/button";
+import { MyContext } from "@/context/context";
 
 const Sidebar = dynamic(
     () => import('@/components/Sidebar/Main'),
@@ -18,10 +20,16 @@ const Sidebar = dynamic(
 
 
 export default function Dashboard() {
-    const [selected, setSelected] = useState<string | null>("");
+    const [selected, setSelected] = useState<string | null>('filters');
     const [isOpen, setIsOpen] = useState(true);
+    const {
+        setSelectedTown,
+        setSelectedBlock,
+        setSelectedFlatType,
+        setSelectedMonth,
+        setSelectedStreetName,
+    } = useContext(MyContext);
 
-    
     const mq = useRef(window.matchMedia("(max-width: 498px)"));
 
     const scrollHandler = (event: MouseEvent<HTMLAnchorElement, MouseEvent>) => {
@@ -33,19 +41,39 @@ export default function Dashboard() {
             }
         }
 
-        if(mq.current.matches) setIsOpen(false);
-        
+        if (mq.current.matches) setIsOpen(false);
+
 
         setSelected(targetId)
     }
 
+    const handleReset = () => {
+        setSelectedTown("");
+        setSelectedBlock("");
+        setSelectedFlatType("");
+        setSelectedMonth('');
+        setSelectedStreetName("");
+    };
 
 
     return (
         <div>
             <Sidebar scrollHandler={scrollHandler} selected={selected} isOpen={isOpen} setIsOpen={setIsOpen} />
+
             <main id="filters" className="mb-52 sm:w-5/6 w-full mt-5 ms-auto shadow-md p-3 overflow-auto">
-                <Towns />
+            <div className="relative">
+                <Button
+                    variant="default"
+                    className="me-2 absolute right-1 top-0"
+                    onClick={handleReset}
+                >
+                    Reset
+                </Button>
+            </div>
+                <div className="w-full flex flex-col lg:flex-row md:flex-row">
+                    <Towns />
+                    <Months />
+                </div>
 
                 <section className="w-full mt-5">
                     <div id="graphs" className="w-full h-full px-9 py-3 rounded-lg shadow-lg border mt-10">
@@ -63,7 +91,6 @@ export default function Dashboard() {
                         </div>
                     </div>
                     <section className="lg:flex md:flex mt-5">
-                        <Months />
                         <TransactionData />
                     </section>
                     <div id="transactions" className="w-full overflow-x-auto min-w-[800px] h-full border px-9 py-3 rounded-lg shadow-lg mt-10">

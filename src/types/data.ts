@@ -4,7 +4,7 @@ export type data = {
    };
    
 export type FilterHandlerParams = {
-    selectedMonths: string[];
+    selectedMonth: string;
     selectedTown: string;
     selectedStreetName: string;
     selectedBlock: string;

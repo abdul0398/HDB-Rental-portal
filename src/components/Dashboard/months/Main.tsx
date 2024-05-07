@@ -1,8 +1,10 @@
+import 'react-datepicker/dist/react-datepicker.css';
 import React, { ChangeEvent, useContext, useEffect, useState } from "react";
 import { MyContext } from "@/context/context";
 import { filterHandler } from "@/app/actions/filterHandler";
 import { filterHandlerReturn } from "@/types/data";
-import 'react-day-picker/dist/style.css';
+import DatePicker from 'react-datepicker';
+import "@/components/Dashboard/months/style.css";
 
 export default function Months() {
     const {
@@ -12,20 +14,15 @@ export default function Months() {
         setFlatTypes,
         setTowns,
         selectedTown,
-        selectedMonths,
+        selectedMonth,
         selectedBlock,
         selectedFlatType,
         selectedStreetName,
         setTransactions,
-        setSelectedMonths,
+        setSelectedMonth,
     } = useContext(MyContext);
 
     const [isReady, setIsReady] = useState(false);
-    const [selectedMonthData, setSelectedMonthData] = useState({
-        month: 9,
-        year: 2023,
-    });
-    const [isPickerOpen, setIsPickerOpen] = useState(false);
 
     useEffect(() => {
         // Set isReady to true after the initial render
@@ -36,7 +33,7 @@ export default function Months() {
     useEffect(() => {
         if (!isReady) return;
         async function fetchData() {
-            const values: filterHandlerReturn = await filterHandler({ selectedMonths, selectedTown, selectedStreetName, selectedBlock, selectedFlatType });
+            const values: filterHandlerReturn = await filterHandler({ selectedMonth, selectedTown, selectedStreetName, selectedBlock, selectedFlatType });
             setStreets(values.filterStreets);
             setBlocks(values.filterBlocks);
             setFlatTypes(values.filterFlatTypes);
@@ -44,34 +41,28 @@ export default function Months() {
             setTransactions(values.filteredTransaction);
         }
         fetchData();
-    }, [selectedMonths]);
+    }, [selectedMonth]);
 
-    const onCheckboxChange = (e: ChangeEvent<HTMLInputElement>, month: string) => {
-        const element = e.target;
-        const isChecked = element.checked;
-        if (isChecked) {
-            setSelectedMonths(prev => [...prev, month]);
-        } else {
-            setSelectedMonths(prev => prev.filter(name => name !== month));
-        }
+    const onCheckboxChange = (e: string) => {
+        const dateString = e;
+        const date = new Date(dateString);
+        const year = date.getFullYear();
+        const month = ("0" + (date.getMonth() + 1)).slice(-2); // Months are zero-based, so add 1
+        const formattedDate = `${year}-${month}`;
+        setSelectedMonth(formattedDate);
     };
 
     return (
-        <div className="border rounded-lg shadow-lg px-2 py-3 mx-1">
-            <h2 className="text-center text-xl">Select Month</h2>
-            <div className="mx-4 h-96 overflow-auto bg-white">
-                <div className="flex flex-col gap-2 p-5 overflow-auto">
-                    {months.map((month, index) => (
-                        <div key={index} className="flex items-center">
-                            <input type="checkbox"
-                                checked={selectedMonths.includes(month)}
-                                onChange={(e) => onCheckboxChange(e, month)}
-                            />
-                            <p className="ms-1">{month}</p>
-                        </div>
-                    ))}
-                </div>
-            </div>
-       </div>
+        <div className="w-full md:w-1/2 lg:w-1/2 mt-5">
+            <h2 className="text-center text-xl w-full mb-10">Select Your Month</h2>
+            <DatePicker
+                selected={selectedMonth ? new Date(selectedMonth) : ""}
+                onChange={(event :any) => onCheckboxChange(event)}
+                dateFormat="MMMM yyyy"
+                showMonthYearPicker
+                includeDates={[...months.map(month => new Date(month))]}
+                inline
+            />
+        </div>
     );
 }

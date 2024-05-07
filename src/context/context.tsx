@@ -20,8 +20,8 @@ interface MyContextValue {
   setSelectedBlock: React.Dispatch<React.SetStateAction<string>>;
   selectedFlatType: string;
   setSelectedFlatType: React.Dispatch<React.SetStateAction<string>>;
-  selectedMonths: string[];
-  setSelectedMonths: React.Dispatch<React.SetStateAction<string[]>>;
+  selectedMonth: string;
+  setSelectedMonth: React.Dispatch<React.SetStateAction<string>>;
   transactions: any[];
   setTransactions: React.Dispatch<React.SetStateAction<any[]>>;
 }
@@ -46,8 +46,8 @@ export const MyContext = createContext<MyContextValue>({
   setSelectedBlock: () => { },
   selectedFlatType: '',
   setSelectedFlatType: () => { },
-  selectedMonths: [],
-  setSelectedMonths: () => { },
+  selectedMonth: '',
+  setSelectedMonth: () => { },
   transactions: [],
   setTransactions: () => { },
 
@@ -63,13 +63,13 @@ const TodoProvider: React.FC<{ children: ReactNode }> = ({ children }) => {
   const [selectedStreetName, setSelectedStreetName] = useState<string>("");
   const [selectedBlock, setSelectedBlock] = useState<string>("");
   const [selectedFlatType, setSelectedFlatType] = useState<string>('');
-  const [selectedMonths, setSelectedMonths] = useState<string[]>([]);
+  const [selectedMonth, setSelectedMonth] = useState<string>('');
   const [transactions, setTransactions] = useState<any[]>([]);
 
 
   // Provide the context value to children
   return (
-    <MyContext.Provider value={{ transactions, setTransactions, towns, setTowns, streets, setStreets, blocks, setBlocks, flatTypes, setFlatTypes, months, setMonths, selectedTown, setSelectedTown, setSelectedStreetName, selectedStreetName, selectedBlock, setSelectedBlock, selectedFlatType, setSelectedFlatType, selectedMonths, setSelectedMonths }}>
+    <MyContext.Provider value={{ transactions, setTransactions, towns, setTowns, streets, setStreets, blocks, setBlocks, flatTypes, setFlatTypes, months, setMonths, selectedTown, setSelectedTown, setSelectedStreetName, selectedStreetName, selectedBlock, setSelectedBlock, selectedFlatType, setSelectedFlatType, selectedMonth, setSelectedMonth }}>
       {children}
     </MyContext.Provider>
   );
