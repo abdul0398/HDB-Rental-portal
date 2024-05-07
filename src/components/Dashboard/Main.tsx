@@ -61,18 +61,17 @@ export default function Dashboard() {
             <Sidebar scrollHandler={scrollHandler} selected={selected} isOpen={isOpen} setIsOpen={setIsOpen} />
 
             <main id="filters" className="mb-52 sm:w-5/6 w-full mt-5 ms-auto shadow-md p-3 overflow-auto">
-            <div className="relative">
-                <Button
-                    variant="default"
-                    className="me-2 absolute right-1 top-0"
-                    onClick={handleReset}
-                >
-                    Reset
-                </Button>
-            </div>
+                <div className="relative">
+                    <Button
+                        variant="default"
+                        className="me-2 absolute right-1 top-0"
+                        onClick={handleReset}
+                    >
+                        Reset
+                    </Button>
+                </div>
                 <div className="w-full flex flex-col lg:flex-row md:flex-row">
                     <Towns />
-                    <Months />
                 </div>
 
                 <section className="w-full mt-5">
@@ -83,6 +82,7 @@ export default function Dashboard() {
                             <Blocks />
                             <FlatType />
 
+
                         </div>
                         <div className="bg-white">
                             <div className="w-full p-5 h-full">
@@ -92,6 +92,8 @@ export default function Dashboard() {
                     </div>
                     <section className="lg:flex md:flex mt-5">
                         <TransactionData />
+                        <Months />
+
                     </section>
                     <div id="transactions" className="w-full overflow-x-auto min-w-[800px] h-full border px-9 py-3 rounded-lg shadow-lg mt-10">
                         <h2 className="text-xl text-center">List of HDB Rental Transactions</h2>

@@ -68,7 +68,7 @@ export default function Towns() {
 
 
     return (
-        <section className="pt-3 w-full md:w-1/2 lg:w-1/2">
+        <section className="pt-3 w-full ">
             <h2 className="text-center text-xl w-full">Select Your Town</h2>
             <div className="mt-5 text-center relative flex items-center">
                 <MdChevronLeft onClick={()=>{slideRight()}} className=" text-2xl cursor-pointer" />

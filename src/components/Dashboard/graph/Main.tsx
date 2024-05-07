@@ -88,9 +88,11 @@ const Graph = () => {
         datasets: dynamicDataset
     };
 
+    
+
     return (
         <div className="h-full">
-            <Line height={1000} width={1300} data={data} />
+            <Line height={600} width={1300} data={data} />
         </div>
     );
 };
