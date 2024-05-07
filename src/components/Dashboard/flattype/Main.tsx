@@ -15,7 +15,7 @@ export default function FlatType() {
         setMonths,
         setTowns,
         selectedTown,
-        selectedMonths,
+        selectedMonth,
         selectedBlock,
         selectedFlatType,
         setTransactions,
@@ -36,7 +36,7 @@ export default function FlatType() {
     useEffect(() => {
         if (!isReady) return;
         async function fetchData() {
-            const values: filterHandlerReturn = await filterHandler({ selectedMonths, selectedTown, selectedStreetName, selectedBlock, selectedFlatType });
+            const values: filterHandlerReturn = await filterHandler({ selectedMonth, selectedTown, selectedStreetName, selectedBlock, selectedFlatType });
             setStreets(values.filterStreets);
             setBlocks(values.filterBlocks);
             setFlatTypes(values.filterFlatTypes);

@@ -12,7 +12,7 @@ export default function Streets() {
         setTowns,
         setMonths,
         selectedTown,
-        selectedMonths,
+        selectedMonth,
         selectedBlock,
         selectedFlatType,
         selectedStreetName,
@@ -31,7 +31,7 @@ export default function Streets() {
     useEffect(() => {
         if (!isReady) return;
         async function fetchData() {
-            const values: filterHandlerReturn = await filterHandler({ selectedMonths, selectedTown, selectedStreetName, selectedBlock, selectedFlatType });
+            const values: filterHandlerReturn = await filterHandler({ selectedMonth, selectedTown, selectedStreetName, selectedBlock, selectedFlatType });
             setBlocks(values.filterBlocks);
             setFlatTypes(values.filterFlatTypes);
             setMonths(values.filterMonths);

@@ -13,7 +13,7 @@ export default function Blocks() {
         setMonths,
         selectedTown,
         setTransactions,
-        selectedMonths,
+        selectedMonth,
         selectedBlock,
         setSelectedBlock,
         selectedFlatType,
@@ -30,7 +30,7 @@ export default function Blocks() {
     useEffect(() => {
         // if (!isReady) return;
         async function fetchData() {
-            const values: filterHandlerReturn = await filterHandler({ selectedMonths, selectedTown, selectedStreetName, selectedBlock, selectedFlatType });
+            const values: filterHandlerReturn = await filterHandler({ selectedMonth, selectedTown, selectedStreetName, selectedBlock, selectedFlatType });
             setStreets(values.filterStreets);
             setFlatTypes(values.filterFlatTypes);
             setMonths(values.filterMonths);
