@@ -49,6 +49,12 @@ export default function Months() {
         const year = date.getFullYear();
         const month = ("0" + (date.getMonth() + 1)).slice(-2); // Months are zero-based, so add 1
         const formattedDate = `${year}-${month}`;
+        if(selectedMonth === formattedDate) {
+            setSelectedMonth("");
+            return;
+        }
+
+
         setSelectedMonth(formattedDate);
     };
 
