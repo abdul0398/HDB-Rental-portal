@@ -71,7 +71,7 @@ export default function TransactionData() {
     };
     return (
         <section className="mx-auto px-2 py-3">
-            <h2 className="text-center text-xl w-full mb-10">Trnsaction Data</h2>
+            <h2 className="text-center text-xl w-full mb-10">Transaction Data</h2>
             <div className="flex flex-wrap">
                 <div className="border shadow-lg rounded-lg mx-auto relative bg-white lg:m-3 md:m-3 my-2">
                     <p className="text-center font-bold">
