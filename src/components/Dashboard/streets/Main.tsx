@@ -55,7 +55,7 @@ export default function Streets() {
     })
 
     return (
-        <section className="w-56 ms-3">
+        <section className="w-40 ms-3">
             {/* <h2 className="text-xl mx-auto text-center">Select Streets</h2> */}
             <WindowedSelect
             placeholder="Select Street"
