@@ -52,7 +52,9 @@ export default function Blocks() {
         }
     })
 
-
+    const styles = {
+        container: css => ({ ...css, width: '170px' }),
+    };
 
     return (
         <div className="w-45 ms-3">
@@ -62,6 +64,7 @@ export default function Blocks() {
                 options={options}
                 value={selectedBlock ? { value: selectedBlock, label: selectedBlock } : null}
                 windowThreshold={50}
+                styles={styles}
                 onChange={(e: any) => handleSelect(e)}
             />
         </div>

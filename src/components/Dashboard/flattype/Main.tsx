@@ -61,7 +61,9 @@ export default function FlatType() {
             label: flatType,
         }
     })
-
+    const styles = {
+        container: css => ({ ...css, width: '170px' }),
+    };
 
     return (
         <div className="w-45 ms-3">
@@ -71,6 +73,7 @@ export default function FlatType() {
                 options={options}
                 value={selectedFlatType ? { value: selectedFlatType, label: selectedFlatType } : null}
                 windowThreshold={50}
+                styles={styles}
                 onChange={(e: any) => handleSelect(e)}
             />
         </div>

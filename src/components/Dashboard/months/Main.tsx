@@ -55,6 +55,10 @@ export default function Months() {
         }
     })
 
+    const styles = {
+        container: css => ({ ...css, width: '170px' }),
+    };
+
     return (
         <div className="w-45 ms-3">
             <WindowedSelect
@@ -62,6 +66,7 @@ export default function Months() {
                 options={options}
                 value={selectedMonth ? { value: selectedMonth, label: selectedMonth } : null}
                 windowThreshold={50}
+                styles={styles}
                 onChange={(e: any) => handleSelect(e)}
             />
         </div>

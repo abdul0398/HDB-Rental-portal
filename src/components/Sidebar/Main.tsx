@@ -45,26 +45,26 @@ export default function Sidebar({ scrollHandler, selected, isOpen, setIsOpen }: 
                     />
                     <div className="h-full rounded-3xl py-4 overflow-y-auto bg-[#303dd7] dark:bg-gray-800 text-white">
                         <div className="mb-5">
-                            <p className="text-center text-2xl font-sans">HDB Rental</p>
+                            <p className="text-center text-xl font-sans">HDB Rental</p>
                         </div>
                         <hr />
                         <ul className="space-y-2 font-medium mt-11 ">
                             <li>
                                 <a onClick={(event) => scrollHandler(event)} data-target="filters" className={`flex items-center ms-auto p-2 w-[90%] rounded-s-3xl  ${selected == "filters" ? "bg-white text-black" : "hover:bg-white hover:text-black"}`}>
 
-                                    <span className="flex-1 ps-5 ms-3 text-xl font-sans whitespace-nowrap cursor-pointer">Filters</span>
+                                    <span className="flex-1 ps-5 ms-3 text-lg font-sans whitespace-nowrap cursor-pointer">Filters</span>
                                 </a>
                             </li>
                             <li>
                                 <a onClick={(event) => scrollHandler(event)} data-target="graphs" className={`flex items-center ms-auto p-2 w-[90%] rounded-s-3xl ${selected == "graphs" ? "bg-white text-black" : "hover:bg-white hover:text-black"}`}>
 
-                                    <span className="flex-1 ps-5 ms-3 text-xl whitespace-nowrap font-sans cursor-pointer">Graphs</span>
+                                    <span className="flex-1 ps-5 ms-3 text-lg whitespace-nowrap font-sans cursor-pointer">Graphs</span>
                                 </a>
                             </li>
                             <li>
                                 <a onClick={(event) => scrollHandler(event)} data-target="transactions" className={`flex items-center ms-auto p-2 w-[90%] rounded-s-3xl  ${selected == "transactions" ? "bg-white text-black" : "hover:bg-white hover:text-black"}`}>
 
-                                    <span className="flex-1 ps-5 ms-3 text-xl whitespace-nowrap font-sans cursor-pointer">Transactions</span>
+                                    <span className="flex-1 ps-5 ms-3 text-lg whitespace-nowrap font-sans cursor-pointer">Transactions</span>
                                 </a>
                             </li>
 
