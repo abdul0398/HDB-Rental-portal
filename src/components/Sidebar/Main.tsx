@@ -4,7 +4,7 @@ import Image from "next/image"
 import React, { useEffect, useRef } from "react"
 
 
-export default function Sidebar({scrollHandler, selected, isOpen, setIsOpen}:{scrollHandler:Function, selected:string | null, isOpen:boolean, setIsOpen:React.Dispatch<React.SetStateAction<boolean>>}) {
+export default function Sidebar({ scrollHandler, selected, isOpen, setIsOpen }: { scrollHandler: Function, selected: string | null, isOpen: boolean, setIsOpen: React.Dispatch<React.SetStateAction<boolean>> }) {
     const mq = useRef(window.matchMedia("(max-width: 498px)"));
 
     useEffect(() => {
@@ -12,7 +12,7 @@ export default function Sidebar({scrollHandler, selected, isOpen, setIsOpen}:{sc
             setIsOpen(!mq.current.matches);
         };
 
-        mq.current.addEventListener('change', handleResize); 
+        mq.current.addEventListener('change', handleResize);
         handleResize();
 
         return () => {
@@ -45,26 +45,24 @@ export default function Sidebar({scrollHandler, selected, isOpen, setIsOpen}:{sc
                     />
                     <div className="h-full rounded-3xl py-4 overflow-y-auto bg-[#303dd7] dark:bg-gray-800 text-white">
                         <div className="mb-5">
-                            <a href="#" className="flex items-center p-2 pointer-events-none">
-                                <span className="ms-3 text-2xl font-sans">HDB Rental</span>
-                            </a>
+                            <p className="text-center text-2xl font-sans">HDB Rental</p>
                         </div>
                         <hr />
                         <ul className="space-y-2 font-medium mt-11 ">
                             <li>
-                                <a onClick={(event)=>scrollHandler(event)} data-target="filters" className={`flex items-center ms-auto p-2 w-[90%] rounded-s-3xl  ${selected == "filters"? "bg-white text-black":"hover:bg-white hover:text-black"}`}>
+                                <a onClick={(event) => scrollHandler(event)} data-target="filters" className={`flex items-center ms-auto p-2 w-[90%] rounded-s-3xl  ${selected == "filters" ? "bg-white text-black" : "hover:bg-white hover:text-black"}`}>
 
                                     <span className="flex-1 ps-5 ms-3 text-xl font-sans whitespace-nowrap cursor-pointer">Filters</span>
                                 </a>
                             </li>
                             <li>
-                                <a onClick={(event)=>scrollHandler(event)} data-target="graphs" className={`flex items-center ms-auto p-2 w-[90%] rounded-s-3xl ${selected == "graphs"? "bg-white text-black":"hover:bg-white hover:text-black"}`}>
+                                <a onClick={(event) => scrollHandler(event)} data-target="graphs" className={`flex items-center ms-auto p-2 w-[90%] rounded-s-3xl ${selected == "graphs" ? "bg-white text-black" : "hover:bg-white hover:text-black"}`}>
 
                                     <span className="flex-1 ps-5 ms-3 text-xl whitespace-nowrap font-sans cursor-pointer">Graphs</span>
                                 </a>
                             </li>
                             <li>
-                                <a onClick={(event)=>scrollHandler(event)} data-target="transactions" className={`flex items-center ms-auto p-2 w-[90%] rounded-s-3xl  ${selected == "transactions"? "bg-white text-black":"hover:bg-white hover:text-black"}`}>
+                                <a onClick={(event) => scrollHandler(event)} data-target="transactions" className={`flex items-center ms-auto p-2 w-[90%] rounded-s-3xl  ${selected == "transactions" ? "bg-white text-black" : "hover:bg-white hover:text-black"}`}>
 
                                     <span className="flex-1 ps-5 ms-3 text-xl whitespace-nowrap font-sans cursor-pointer">Transactions</span>
                                 </a>

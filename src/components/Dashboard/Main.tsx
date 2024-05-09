@@ -60,7 +60,7 @@ export default function Dashboard() {
         <div>
             <Sidebar scrollHandler={scrollHandler} selected={selected} isOpen={isOpen} setIsOpen={setIsOpen} />
 
-            <main id="filters" className="mb-52 sm:w-5/6 w-full mt-5 ms-auto p-3 overflow-auto lg:ps-10">
+            <main id="filters" className="sm:w-5/6 w-full mt-5 ms-auto p-3 overflow-auto lg:ps-10">
                 <div className="relative">
                     <Button
                         variant="default"
@@ -75,31 +75,42 @@ export default function Dashboard() {
                 </div>
 
                 <section className="w-full mt-5">
-                    <div id="graphs" className="w-full h-full px-9 py-3 rounded-lg shadow-lg border mt-10">
+                    <div id="graphs" className="w-full h-full lg:px-9 md:px-9 px-2 py-3 rounded-lg shadow-lg border mt-10">
                         <div className="flex gap-1 flex-wrap mx-auto justify-center w-fit">
                             <h2 className="text-xl text-center">Rental Trend By Flat Type</h2>
                             <Streets />
                             <Blocks />
                             <FlatType />
-
-
+                            <Months />
                         </div>
                         <div className="bg-white">
                             <div className="w-full p-5 h-full">
                                 <Graph />
                             </div>
+                            <hr />
+                            <div className="mb-10">
+                                <TransactionData />
+                            </div>
+
                         </div>
                     </div>
-                    <section className="lg:flex md:flex mt-5">
-                        <Months />
-                        <TransactionData />
-
-                    </section>
                     <div id="transactions" className="w-full overflow-x-auto min-w-[800px] h-full border px-9 py-3 rounded-lg shadow-lg mt-10">
-                        <h2 className="text-xl text-center">List of HDB Rental Transactions</h2>
+                        <div className="flex gap-1 flex-wrap mx-auto justify-center w-fit">
+                            <h2 className="text-xl text-center">List of HDB Rental Transactions</h2>
+                            <Streets />
+                            <Blocks />
+                            <FlatType />
+                            <Months />
+                        </div>
                         <Transactions />
                     </div>
 
+                </section>
+                <section className="p-4 w-full h-56 mt-10 shadow-lg border rounded-2xl">
+                    <h2 className="text-center font-bold text-xl mb-2">Banner</h2>
+                    <p>
+                        Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industrys standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
+                    </p>
                 </section>
             </main>
         </div>

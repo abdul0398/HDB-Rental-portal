@@ -1,10 +1,10 @@
 import 'react-datepicker/dist/react-datepicker.css';
-import React, { ChangeEvent, useContext, useEffect, useState } from "react";
+import React, {useContext, useEffect, useState } from "react";
 import { MyContext } from "@/context/context";
 import { filterHandler } from "@/app/actions/filterHandler";
 import { filterHandlerReturn } from "@/types/data";
-import DatePicker from 'react-datepicker';
-import "@/components/Dashboard/months/style.css";
+import WindowedSelect from 'react-windowed-select';
+
 
 export default function Months() {
     const {
@@ -43,31 +43,26 @@ export default function Months() {
         fetchData();
     }, [selectedMonth]);
 
-    const onCheckboxChange = (e: string) => {
-        const dateString = e;
-        const date = new Date(dateString);
-        const year = date.getFullYear();
-        const month = ("0" + (date.getMonth() + 1)).slice(-2); // Months are zero-based, so add 1
-        const formattedDate = `${year}-${month}`;
-        if(selectedMonth === formattedDate) {
-            setSelectedMonth("");
-            return;
+
+    const handleSelect = (e: any) => {
+        setSelectedMonth(e.value as string);
+    }
+
+    const options = months.map((month) => {
+        return {
+            value: month,
+            label: month,
         }
-
-
-        setSelectedMonth(formattedDate);
-    };
+    })
 
     return (
-        <div className="w-full md:w-1/2 lg:w-1/2 mt-5">
-            <h2 className="text-center text-xl w-full mb-10">Select Your Month</h2>
-            <DatePicker
-                selected={selectedMonth ? new Date(selectedMonth) : ""}
-                onChange={(event :any) => onCheckboxChange(event)}
-                dateFormat="MMMM yyyy"
-                showMonthYearPicker
-                includeDates={[...months.map(month => new Date(month))]}
-                inline
+        <div className="w-56 ms-3">
+            <WindowedSelect
+                placeholder="Select Month"
+                options={options}
+                value={selectedMonth ? { value: selectedMonth, label: selectedMonth } : null}
+                windowThreshold={50}
+                onChange={(e: any) => handleSelect(e)}
             />
         </div>
     );
