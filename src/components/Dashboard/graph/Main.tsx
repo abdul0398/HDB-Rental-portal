@@ -1,6 +1,6 @@
 import React, { useContext, useEffect, useState } from "react";
 import { Line } from "react-chartjs-2";
-import { Chart } from 'chart.js';
+import { Chart, ChartOptions } from 'chart.js';
 import { registerables } from 'chart.js';
 import { MyContext } from "@/context/context";
 import { convertDateFormat } from "../../../../libs/tools";
@@ -92,8 +92,31 @@ const Graph = () => {
         datasets: dynamicDataset
     };
 
-    const options = {
+    const options : ChartOptions<'line'> = {
         maintainAspectRatio: false,
+        scales: {
+            x: {
+                title: {
+                    display: true,
+                    text: 'Date',
+                    font: {
+                        size: 16,
+                        weight: 'bold'
+                    }
+                },
+            },
+            y: {
+                title: {
+                    display: true,
+                    text: 'Average Rent',
+                    font: {
+                        size: 16,
+                        weight: 'bold'
+                    }
+                }
+            }
+        }
+        
     }
 
     return (

@@ -8,6 +8,7 @@ import { street_flatTypeRelation } from "@/data/streets/street_blockRelation";
 import { block_flat_typeRelation } from "@/data/blocks/block_dateRelation";
 import { flat_type_townRelation } from "@/data/flatType/flat_type_blockRelation";
 import { date_townRelation } from "@/data/date/date_blockRelation";
+import { BsBuildings } from "react-icons/bs";
 import Image from 'next/image';
 const Dashboard = dynamic(
   () => import('@/components/Dashboard/Main'),
@@ -55,15 +56,10 @@ export default function Home() {
     <>
       {
         isLoading && (
-          <div className="bg-black fixed z-50 w-full h-full flex justify-center items-center opacity-80">
+          <div className="bg-black pointer-events-none fixed z-50 w-full h-full flex justify-center items-center opacity-80">
             <div role="status">
-            <Image 
-              alt="Loading..."
-              src="/loading.jpeg"
-              width={100}
-              height={100}
-            />
-              <span className="sr-only">Loading...</span>
+              <BsBuildings size={50} color="white" />
+            <p className="text-white">Loading...</p>
             </div>
           </div>
         )
