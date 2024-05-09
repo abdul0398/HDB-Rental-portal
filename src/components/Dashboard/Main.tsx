@@ -76,7 +76,7 @@ export default function Dashboard() {
 
                 <section className="w-full mt-5">
                     <div id="graphs" className="w-full h-full lg:px-9 md:px-9 px-2 py-3 rounded-lg shadow-lg border mt-10">
-                        <div className="flex gap-1 flex-wrap mx-auto justify-center w-fit">
+                        <div className="flex gap-1 lg:flex-row md-flex-row flex-col mx-auto justify-center w-fit">
                             <h2 className="text-xl text-center">Rental Trend By Flat Type</h2>
                             <Streets />
                             <Blocks />
@@ -94,7 +94,7 @@ export default function Dashboard() {
                         </div>
                     </div>
                     <div id="transactions" className="w-full overflow-x-auto min-w-[800px] h-full border px-9 py-3 rounded-lg shadow-lg mt-10">
-                        <div className="flex gap-1 flex-wrap mx-auto justify-center w-fit">
+                        <div className="flex gap-1 mx-auto justify-center w-fit">
                             <h2 className="text-xl text-center">List of HDB Rental Transactions</h2>
                             <Streets />
                             <Blocks />

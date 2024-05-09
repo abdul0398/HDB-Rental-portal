@@ -56,7 +56,7 @@ export default function Months() {
     })
 
     return (
-        <div className="w-40 ms-3">
+        <div className="w-45 ms-3">
             <WindowedSelect
                 placeholder="Select Month"
                 options={options}
