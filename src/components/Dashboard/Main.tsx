@@ -20,13 +20,13 @@ import {
 } from "react-icons/md";
 import { SiCodeblocks } from "react-icons/si";
 import TranstionBox from "../ui/transaction.box";
+import { useSearchParams } from "next/navigation";
 
 const Sidebar = dynamic(() => import("@/components/Sidebar/Main"), {
   ssr: false,
 });
 
 export default function Dashboard() {
-  const [selectedView, setSelectedView] = useState<string>("graph");
   const {
     setSelectedTown,
     setSelectedBlock,
@@ -39,6 +39,8 @@ export default function Dashboard() {
     setSelectedStreetName,
     transactions,
   } = useContext(MyContext);
+
+  const [selectedView, setSelectedView] = useState<string>("graph");
 
   const handleReset = () => {
     setSelectedTown("");
@@ -100,18 +102,18 @@ export default function Dashboard() {
           <section>
             <div className="filter-slider h-48 mt-10 flex gap-8 overflow-x-scroll scroll-smooth mx-auto whitespace-nowrap w-[90%] p-2 no-scrollbar rounded-md">
               <FilterBox
+                select={<Blocks />}
+                name="Blocks"
+                selected={selectedBlock}
+                icon={<SiCodeblocks className="text-2xl text-white" />}
+              />
+              <FilterBox
                 select={<Streets />}
                 name="Street"
                 selected={selectedStreetName}
                 icon={<FaStreetView className="text-2xl text-white" />}
               />
 
-              <FilterBox
-                select={<Blocks />}
-                name="Blocks"
-                selected={selectedBlock}
-                icon={<SiCodeblocks className="text-2xl text-white" />}
-              />
               <FilterBox
                 select={<FlatType />}
                 name="Flat Type"
