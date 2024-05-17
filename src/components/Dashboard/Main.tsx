@@ -20,7 +20,6 @@ import {
 } from "react-icons/md";
 import { SiCodeblocks } from "react-icons/si";
 import TranstionBox from "../ui/transaction.box";
-import { useSearchParams } from "next/navigation";
 
 const Sidebar = dynamic(() => import("@/components/Sidebar/Main"), {
   ssr: false,
