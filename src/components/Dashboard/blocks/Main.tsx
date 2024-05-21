@@ -57,7 +57,7 @@ export default function Blocks() {
   });
 
   return (
-    <div className="w-45 ms-3">
+    <div className="w-45">
       {/* <h2 className="text-center text-xl">Select Blocks</h2> */}
       <WindowedSelect
         placeholder="Select Block"

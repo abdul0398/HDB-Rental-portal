@@ -75,19 +75,19 @@ export default function Dashboard() {
   );
   return (
     <div className="h-full w-full flex justify-center items-center">
-      <div className="w-[90%] flex h-[90%]">
+      <div className="w-[98%] flex h-[98%] rounded-l-[40px]">
         <Sidebar
           selectedView={selectedView}
           setSelectedView={setSelectedView}
         />
         <main
           id="main-container"
-          className="sm:w-5/6 w-full rounded-r-3xl ms-auto border h-full overflow-auto lg:p-2 shadow-md"
+          className="w-full rounded-r-[40px] rounded-l-[40px] lg:rounded-l-none md:rounded-l-none ms-auto border h-full overflow-auto lg:p-2 shadow-md"
         >
           <div className="relative h-14">
             <Button
               variant="default"
-              className="me-2 absolute right-1 top-5"
+              className="me-2 absolute bg-[#0c3f74] font-bold hover:bg-[#0c3f74] right-1 top-5"
               onClick={handleReset}
             >
               Reset
@@ -99,7 +99,7 @@ export default function Dashboard() {
             </div>
           </section>
           <section>
-            <div className="filter-slider h-48 mt-10 flex gap-8 overflow-x-scroll scroll-smooth mx-auto whitespace-nowrap w-[90%] p-2 no-scrollbar rounded-md">
+            <div className="filter-slider lg:h-48 h-[400px] mt-10 grid lg:grid-cols-4 lg:gap-4 md:gap-2 gap-3 mx-auto grid-cols-2 lg:w-[90%] md:w-[90%] w-[98%] p-2 rounded-md">
               <FilterBox
                 select={<Blocks />}
                 name="Blocks"
@@ -128,27 +128,9 @@ export default function Dashboard() {
                 icon={<MdCalendarMonth className="text-2xl text-white" />}
               />
             </div>
-            <div className="text-center flex justify-center gap-2 mt-3">
-              <div className="rounded-full h-8 w-8 flex justify-center items-center bg-[#0e4884]">
-                <MdChevronLeft
-                  onClick={() => {
-                    slideRight();
-                  }}
-                  className=" text-2xl cursor-pointer mx-auto text-white"
-                />
-              </div>
-              <div className="rounded-full h-8 w-8 flex justify-center items-center bg-[#0e4884]">
-                <MdChevronRight
-                  onClick={() => {
-                    slideLeft();
-                  }}
-                  className="text-2xl cursor-pointer text-white"
-                />
-              </div>
-            </div>
           </section>
 
-          <section className="w-[90%] overflow-x-auto overflow-y-hidden mx-auto border h-[700px] pb-3 mt-10 rounded-xl">
+          <section className="lg:w-[90%] md:w-[90%] w-[98%] overflow-x-auto overflow-y-hidden mx-auto border h-[700px] pb-3 mt-10 rounded-xl">
             <div className="min-w-[700px] w-full">
               <div className="bg-[#0e4884] w-full h-14 rounded-t-xl flex items-center ps-3">
                 <Button
@@ -177,26 +159,29 @@ export default function Dashboard() {
           </section>
 
           <section>
-            <div className="w-[90%] mx-auto mt-10 grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-3">
+            <div className="lg:w-[90%] md:w-[90%] w-[98%] mx-auto mt-10 grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-3">
               <TranstionBox
                 name="Transactions"
                 value={`${transactions.length}`}
                 title="Transactions"
+                imageUrl="graph1.png"
               />
               <TranstionBox
                 name="Highest Rentals"
                 value={`$${maxPrice}`}
                 title="Rentals"
+                imageUrl="graph1.png"
               />
               <TranstionBox
                 name="Lowest Rentals"
                 value={`$${minPrice}`}
                 title="Rentals"
+                imageUrl="graph1.png"
               />
             </div>
           </section>
 
-          <section className="p-7 relative  bg-[url('/building-banner.jpeg')]  bg-cover bg-center before:bg-blue-400 bg-no-repeat w-[90%] mx-auto h-52 border rounded-xl mt-10">
+          <section className="p-7 relative  bg-[url('/building-banner.jpeg')]  bg-cover bg-center before:bg-blue-400 bg-no-repeat lg:w-[90%] md:w-[90%] w-[98%] mx-auto h-52 border rounded-xl mt-10">
             <div className="lg:w-2/3 md:2/3 w-full">
               <h2 className="lg:text-3xl md:text-2xl text-xl text-white z-20 opacity-100">
                 Discover your dream condo rental and make it your home

@@ -1,4 +1,4 @@
-import React, { useState, useMemo, useCallback, useEffect } from "react";
+import { useState, useMemo, useEffect } from "react";
 import { useSearchParams } from "next/navigation";
 import { town_flatTypeRelation } from "@/data/towns/town_blockRelation";
 import { street_flatTypeRelation } from "@/data/streets/street_blockRelation";

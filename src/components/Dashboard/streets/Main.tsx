@@ -57,7 +57,7 @@ export default function Streets() {
   });
 
   return (
-    <section className="min-w-45 mx-auto">
+    <section className="w-45">
       <WindowedSelect
         placeholder="Select Street"
         options={options}
