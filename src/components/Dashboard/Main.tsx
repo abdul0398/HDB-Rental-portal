@@ -12,20 +12,18 @@ import { Button } from "../ui/button";
 import { MyContext } from "@/context/context";
 import FilterBox from "../ui/filterBox";
 import { FaStreetView } from "react-icons/fa";
-import {
-  MdChevronLeft,
-  MdChevronRight,
-  MdOutlineBedroomParent,
-  MdCalendarMonth,
-} from "react-icons/md";
+import { MdOutlineBedroomParent, MdCalendarMonth } from "react-icons/md";
 import { SiCodeblocks } from "react-icons/si";
 import TranstionBox from "../ui/transaction.box";
+import { IoMenu } from "react-icons/io5";
+import { useMediaQuery } from "react-responsive";
 
 const Sidebar = dynamic(() => import("@/components/Sidebar/Main"), {
   ssr: false,
 });
 
 export default function Dashboard() {
+  const isMobile = useMediaQuery({ query: "(max-width: 600px)" });
   const {
     setSelectedTown,
     setSelectedBlock,
@@ -40,6 +38,7 @@ export default function Dashboard() {
   } = useContext(MyContext);
 
   const [selectedView, setSelectedView] = useState<string>("graph");
+  const [isOpen, setIsOpen] = useState<boolean>(!isMobile);
 
   const handleReset = () => {
     setSelectedTown("");
@@ -57,34 +56,39 @@ export default function Dashboard() {
     }
   }, [selectedView]);
 
-  const slideLeft = () => {
-    const slider = document.querySelector(".filter-slider") as HTMLElement;
-    slider.scrollLeft += 400;
-  };
-
-  const slideRight = () => {
-    const slider = document.querySelector(".filter-slider") as HTMLElement;
-    slider.scrollLeft -= 400;
-  };
-
   const maxPrice = Math.max(
     ...transactions.map((transaction) => transaction.monthly_rent)
   );
   const minPrice = Math.min(
     ...transactions.map((transaction) => transaction.monthly_rent)
   );
+
+  const sideBarHandler = () => {
+    setIsOpen(!isOpen);
+  };
+
   return (
     <div className="h-full w-full flex justify-center items-center">
+      {isMobile && (
+        <div className="h-48 w-full">
+          <div className="fixed top-0 right-0 opacity-50 z-50">
+            <IoMenu size={40} onClick={sideBarHandler} />
+          </div>
+        </div>
+      )}
       <div className="w-[98%] flex h-[98%] rounded-l-[40px]">
         <Sidebar
           selectedView={selectedView}
           setSelectedView={setSelectedView}
+          isOpen={isOpen}
+          setIsOpen={setIsOpen}
+          isMobile={isMobile}
         />
         <main
           id="main-container"
           className="w-full rounded-r-[40px] rounded-l-[40px] lg:rounded-l-none md:rounded-l-none ms-auto border h-full overflow-auto lg:p-2 shadow-md"
         >
-          <div className="relative h-14">
+          <div className="relative h-14 mt-10">
             <Button
               variant="default"
               className="me-2 absolute bg-[#0c3f74] font-bold hover:bg-[#0c3f74] right-1 top-5"
