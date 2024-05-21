@@ -13,7 +13,7 @@ export default function TranstionBox({
     <div className="h-80 border rounded mt-10 bg-[#ededed] shadow-xl">
       <div className="w-full h-2/3 relative">
         <div
-          className={`w-[95%] bg-[url('/${imageUrl}')] bg-no-repeat bg-cover bg-center absolute h-[90%] rounded-lg translate-x-1/2 right-1/2 top-[-30px] shadow-lg`}
+          className={`w-[95%] bg-[url('/graph1.png')] bg-no-repeat bg-cover bg-center absolute h-[90%] rounded-lg translate-x-1/2 right-1/2 top-[-30px] shadow-lg`}
         ></div>
       </div>
       <div className="w-[90%] mx-auto flex">
