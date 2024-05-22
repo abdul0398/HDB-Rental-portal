@@ -17,6 +17,9 @@ import { SiCodeblocks } from "react-icons/si";
 import TranstionBox from "../ui/transaction.box";
 import { IoMenu } from "react-icons/io5";
 import { useMediaQuery } from "react-responsive";
+import HighestGraph from "./graph/small/highest/Main";
+import LowestGraph from "./graph/small/lowest/Main";
+import TransactionGraph from "./graph/small/transaction/Main";
 
 const Sidebar = dynamic(() => import("@/components/Sidebar/Main"), {
   ssr: false,
@@ -81,7 +84,7 @@ export default function Dashboard() {
           id="main-container"
           className="w-full pb-5 rounded-r-[40px] rounded-l-[40px] lg:rounded-l-none md:rounded-l-none ms-auto border h-full overflow-auto lg:p-2 shadow-md"
         >
-          <div className="flex justify-end px-2 h-14 mt-5">
+          <div className="flex justify-end px-2 h-8 mt-5">
             <Button
               variant="default"
               className="me-2 bg-[#0c3f74] font-bold hover:bg-[#0c3f74]"
@@ -166,19 +169,19 @@ export default function Dashboard() {
                 name="Transactions"
                 value={`${transactions.length}`}
                 title="Transactions"
-                imageUrl="graph1.png"
+                graph={TransactionGraph}
               />
               <TranstionBox
                 name="Highest Rentals"
                 value={`$${maxPrice}`}
                 title="Rentals"
-                imageUrl="graph1.png"
+                graph={HighestGraph}
               />
               <TranstionBox
                 name="Lowest Rentals"
                 value={`$${minPrice}`}
                 title="Rentals"
-                imageUrl="graph1.png"
+                graph={LowestGraph}
               />
             </div>
           </section>

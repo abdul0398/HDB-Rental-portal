@@ -1,20 +1,24 @@
+import { FC, FunctionComponent } from "react";
+
 export default function TranstionBox({
   name,
   value,
   title,
-  imageUrl,
+  graph,
 }: {
   name: string;
   value: string;
   title: string;
-  imageUrl: string;
+  graph: Function;
 }) {
   return (
     <div className="h-80 border rounded mt-10 bg-[#ededed] shadow-xl">
       <div className="w-full h-2/3 relative">
         <div
-          className={`w-[95%] bg-[url('/graph1.png')] bg-no-repeat bg-cover bg-center absolute h-[90%] rounded-lg translate-x-1/2 right-1/2 top-[-30px] shadow-lg`}
-        ></div>
+          className={`w-[95%] bg-[#0e4884] bg-no-repeat bg-cover bg-center absolute h-[90%] rounded-lg translate-x-1/2 right-1/2 top-[-30px] shadow-lg`}
+        >
+          {graph()}
+        </div>
       </div>
       <div className="w-[90%] mx-auto flex">
         <h2 className="lg:text-xl font-bold text-[#0e4884]">{name}</h2>
