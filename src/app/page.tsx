@@ -19,7 +19,7 @@ export default function Home() {
       {isLoading && (
         <div className="bg-black pointer-events-none fixed z-50 w-full h-full flex justify-center items-center opacity-80">
           <div role="status">
-            <Image src="/logo.png" alt="Loading" width={100} height={100} />
+            <Image src="/logo.png" alt="Loading" width={220} height={220} />
             <p className="text-white text-center">Loading...</p>
           </div>
         </div>

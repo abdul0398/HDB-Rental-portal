@@ -68,7 +68,7 @@ export default function Towns() {
   };
 
   return (
-    <section className="pt-3 w-full ">
+    <section className="w-full ">
       {/* <h2 className="text-center text-xl w-full">Select Your Town</h2> */}
       <div className="mt-5 text-center relative flex items-center">
         <div className="absolute left-[4%] bg-white rounded-full border w-7 h-7 flex justify-center items-center">

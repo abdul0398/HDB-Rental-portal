@@ -69,13 +69,6 @@ export default function Dashboard() {
 
   return (
     <div className="h-full w-full flex justify-center items-center">
-      {isMobile && (
-        <div className="h-48 w-full">
-          <div className="fixed top-0 right-0 opacity-50 z-50">
-            <IoMenu size={40} onClick={sideBarHandler} />
-          </div>
-        </div>
-      )}
       <div className="w-[98%] flex h-[98%] rounded-l-[40px]">
         <Sidebar
           selectedView={selectedView}
@@ -86,24 +79,29 @@ export default function Dashboard() {
         />
         <main
           id="main-container"
-          className="w-full rounded-r-[40px] rounded-l-[40px] lg:rounded-l-none md:rounded-l-none ms-auto border h-full overflow-auto lg:p-2 shadow-md"
+          className="w-full pb-5 rounded-r-[40px] rounded-l-[40px] lg:rounded-l-none md:rounded-l-none ms-auto border h-full overflow-auto lg:p-2 shadow-md"
         >
-          <div className="relative h-14 mt-10">
+          <div className="flex justify-end px-2 h-14 mt-5">
             <Button
               variant="default"
-              className="me-2 absolute bg-[#0c3f74] font-bold hover:bg-[#0c3f74] right-1 top-5"
+              className="me-2 bg-[#0c3f74] font-bold hover:bg-[#0c3f74]"
               onClick={handleReset}
             >
               Reset
             </Button>
+            {isMobile && (
+              <div className="opacity-50">
+                <IoMenu size={40} onClick={sideBarHandler} />
+              </div>
+            )}
           </div>
           <section>
-            <div className="w-full mt-5 flex flex-col lg:flex-row md:flex-row">
+            <div className="w-full flex flex-col lg:flex-row md:flex-row">
               <Towns />
             </div>
           </section>
           <section>
-            <div className="filter-slider lg:h-48 h-[400px] mt-10 grid lg:grid-cols-4 lg:gap-4 md:gap-2 gap-3 mx-auto grid-cols-2 lg:w-[90%] md:w-[90%] w-[98%] p-2 rounded-md">
+            <div className="filter-slider lg:h-48 h-[400px] mt-10 grid lg:grid-cols-4 lg:gap-4 md:gap-2 gap-3 mx-auto grid-cols-2 lg:w-[90%] md:w-[90%] w-full px-1 rounded-md">
               <FilterBox
                 select={<Blocks />}
                 name="Blocks"
