@@ -125,6 +125,16 @@ export const filterHandler = async ({
       filteredTransaction.push(transaction);
     }
   }
+  filteredTransaction.sort((a, b) => {
+    /// based on town
+    if (a.town < b.town) {
+      return -1;
+    }
+    if (a.town > b.town) {
+      return 1;
+    }
+    return 0;
+  })
 
   return {
     filterMonths: [...new Set(filterMonths)].sort(),

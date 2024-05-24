@@ -33,7 +33,6 @@ export default function useIntialiseContext() {
       Object.keys(date_townRelation)
     );
   
-    console.log(validStreet, validBlock);
     const [selectedTown, setSelectedTown] = useState<string>("");
     const [selectedStreetName, setSelectedStreetName] =
       useState<string>(validStreet);
